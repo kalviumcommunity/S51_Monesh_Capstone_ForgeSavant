@@ -36,7 +36,7 @@ Follow these instructions to set up the ForgeSavant project on your local machin
    npm install
    ```
 
-3. **[Missing Step]** Initialize the database:
+3. Initialize the database:
 
    ```bash
    npm run init-db
