@@ -1,0 +1,18 @@
+{
+  "name": "s51_forgesavant",
+  "version": "1.0.0",
+  "description": "ForgeSavant is a web application aimed at providing users with a seamless experience in checking and building custom PC configurations virtually. It offers a comprehensive platform to assess compatibility, performance scores, and real-time prices of selected components, empowering users to make informed decisions when crafting their ideal PC builds.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "nodemon": "^3.1.0"
+  }
+}
