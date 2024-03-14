@@ -1,13 +1,19 @@
 const express = require('express');
 const app = express();
 require("dotenv").config()
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+const { startDB, isConnected } = require('./db')
+
+// Middleware for parsing JSON and urlencoded form data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  res.send('Welcome to ForgeSavant API!');
+  res.send(isConnected() ? 'Welcome to ForgeSavant API!' : "Server isn't connected to the database yet.");
 });
 
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, async () => {
+  await startDB();
   console.log(`Server is running on port ${PORT}`);
 });
 
