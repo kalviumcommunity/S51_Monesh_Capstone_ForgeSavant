@@ -13,8 +13,13 @@ app.get('/', (req, res) => {
 });
 
 const server = app.listen(PORT, async () => {
-  await startDB();
-  console.log(`Server is running on port ${PORT}`);
+  try {
+    await startDB();
+    console.log(`Server is running on port ${PORT}`);
+  } catch (err) {
+    console.error('An error occurred while starting the server:', err);
+    process.exit(1);
+  }
 });
 
 server.on('error', (err) => {
@@ -24,3 +29,4 @@ server.on('error', (err) => {
     console.error('An error occurred while starting the server:', err);
   }
 });
+
