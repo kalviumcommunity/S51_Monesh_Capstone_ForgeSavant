@@ -1,14 +1,14 @@
 import React from "react";
-import About from "./Components/About";
-import './App.css';
+import NavBar from "./Components/Navbar";
+import Home from "./Components/Home";
+import './App.css'
 
 const App = () => {
   return (
-    <>
-      <div className="App">
-        <About />
-      </div>
-    </>
+    <div>
+      <NavBar />
+      <Home />
+    </div>
   );
 };
 
