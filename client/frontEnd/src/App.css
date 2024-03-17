@@ -1,33 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 *{
-  margin: 0;
   padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body{
-  background-color: blue;
-}
-
-.About{
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: aliceblue;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin: 0 200px;
-  text-shadow: 1px 1px 2px black;
-  margin-top: 300px;
-}
-
-.About p{
-  margin: 0 30px;
-  margin-top: 20px;
-}
-
-.About a{
-  margin-top: 20px;
-  color: aliceblue;
+  background-size: cover;
+  overflow-y: scroll;
 }
