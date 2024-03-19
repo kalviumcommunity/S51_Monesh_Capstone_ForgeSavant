@@ -1,46 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
-#homepage {
-  height: 100vh;
+
+.parallax-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  height: 100vh;
 }
 
-.body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
-  background-image: url("../assets/Background.svg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.content {
   text-align: center;
-  font-family: "Russo One", sans-serif;
-  color: white;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
-}
-
-#content-para {
-  margin-top: 20px;
+  font-family: 'Russo One', sans-serif;
   max-width: 600px;
+  padding: 20px;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
 }
 
-#appear {
-  height: 100vh;
+.content-head {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.content-para {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.coming-soon {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  font-family: "Russo One", sans-serif;
-  background-color: rgb(255, 255, 255);
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  color: rgb(0, 0, 0);
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+  height: 100vh
+}
+
+.coming-soon h1 {
+  font-size: 3rem;
+  text-align: center;
+  color: black; 
+  font-family: 'Russo One', sans-serif;
+  padding: 20px;
 }

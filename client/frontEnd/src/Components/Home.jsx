@@ -1,26 +1,42 @@
 import React from "react";
-import { Parallax } from "react-parallax";
 import "../Styles/home.css";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import Background from "../assets/Background.svg";
 
 const Home = () => {
   return (
     <>
-      <div id="homepage">
-        <div className="body">
-          <div id="content">
-            <h1 id="content-head">Welcome to the world of <br/> FORGE SAVANT</h1>
-            <p id="content-para">
-              Discover the perfect components for your DREAM PC with complete
-              transparency. Build your ultimate setup confidently, knowing you
-              have access to top-quality parts without any hidden surprises.
-            </p>
+      <Parallax pages={2} style={{ height: "100vh" }}>
+        <ParallaxLayer
+          offset={0}
+          speed={0.7}
+          style={{
+            backgroundImage: `url(${Background})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></ParallaxLayer>
+        <ParallaxLayer offset={0} speed={1.5}>
+          <div className="parallax-wrapper">
+            <div className="content">
+              <h1 className="content-head">
+                Welcome to the world of <br />
+                FORGE SAVANT
+              </h1>
+              <p className="content-para">
+                Discover the perfect components for your DREAM PC with complete
+                transparency. Build your ultimate setup confidently, knowing you
+                have access to top-quality parts without any hidden surprises.
+              </p>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div id="appear">
-        <h1>COMING SOON...</h1>
-      </div>
+        </ParallaxLayer>
+        <ParallaxLayer offset={1} speed={0.6}>
+          <div className="coming-soon">
+            <h1>Coming Soon...</h1>
+          </div>
+        </ParallaxLayer>
+      </Parallax>
     </>
   );
 };
