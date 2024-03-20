@@ -8,10 +8,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(182, 182, 182, 0.455);
+  background-color: rgba(182, 182, 182, 0.268);
   z-index: 1000;
   padding: 10px 20px;
   transition: opacity 0.5s;
+  backdrop-filter: blur(2px);
 }
 
 #left-nav img {
