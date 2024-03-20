@@ -17,7 +17,7 @@ const Home = () => {
           }}
         ></ParallaxLayer>
         <ParallaxLayer offset={0} speed={1.5}>
-          <div className="parallax-wrapper">
+          <div className="parallax-wrapper" aria-label="Forge Savant Introduction">
             <div className="content">
               <h1 className="content-head">
                 Welcome to the world of <br />
@@ -31,7 +31,7 @@ const Home = () => {
             </div>
           </div>
         </ParallaxLayer>
-        <ParallaxLayer offset={1} speed={0.6}>
+        <ParallaxLayer offset={1} speed={2.5}>
           <div className="coming-soon">
             <h1>Coming Soon...</h1>
           </div>

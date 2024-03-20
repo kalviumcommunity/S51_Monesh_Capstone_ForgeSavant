@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  will-change: transform;
 }
 
 .content {
@@ -30,7 +31,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh
+  height: 100vh;
+  will-change: transform;
 }
 
 .coming-soon h1 {
