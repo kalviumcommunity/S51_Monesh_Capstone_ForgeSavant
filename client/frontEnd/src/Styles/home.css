@@ -1,44 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
-.parallax-wrapper {
+.home-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  will-change: transform;
 }
 
-.content {
-  text-align: center;
-  font-family: 'Russo One', sans-serif;
-  max-width: 600px;
-  padding: 20px;
-  color: white;
-  text-shadow: 2px 2px 4px #000000;
+.home-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-.content-head {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+.content{
+    height:100vh;
 }
 
-.content-para {
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-.coming-soon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  will-change: transform;
-}
-
-.coming-soon h1 {
-  font-size: 3rem;
-  text-align: center;
-  color: black; 
-  font-family: 'Russo One', sans-serif;
-  padding: 20px;
+.content img{
+    padding-top: 10px;
+    height: 35rem;
+    margin: auto;
 }
