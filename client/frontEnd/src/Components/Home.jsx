@@ -14,13 +14,12 @@ const Home = () => {
   return (
     <>
       <animated.div style={animation} className="home-container">
-            <div className="content">
-              <img src={content1} alt="Content1" className="content1" />
-            </div>
-            <div className="content">
-              <img src={content2} alt="Content2" className="content2" />
-            </div>
-
+        <div className="content">
+          <img src={content1} alt="Content1" className="content1" />
+        </div>
+        <div className="content">
+          <img src={content2} alt="Content2" className="content2" />
+        </div>
       </animated.div>
     </>
   );
