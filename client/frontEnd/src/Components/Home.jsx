@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import "../Styles/home.css";
 import content1 from "../assets/Content1.png";
 import content2 from "../assets/Content2.png";
-import logo from "../assets/ForgeSavant1.png"
-import menu from "../assets/Menu.png"
+import logo from "../assets/ForgeSavant1.png";
+import menu from "../assets/Menu.png";
 
 const Home = () => {
   const [showSideNav, setShowSideNav] = useState(false);
@@ -24,6 +24,18 @@ const Home = () => {
   const toggleSideNav = () => {
     setShowSideNav(!showSideNav);
   };
+
+  useEffect(() => {
+    const handleToggle = () => {
+      setShowSideNav((prev) => !prev);
+    };
+
+    document.addEventListener("click", handleToggle);
+
+    return () => {
+      document.removeEventListener("click", handleToggle);
+    };
+  }, []);
 
   return (
     <>
