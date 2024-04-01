@@ -8,13 +8,11 @@ function Signup() {
 
   const rightSideAnimation = useSpring({
     transform: isLoginPage ? "translateX(-70%)" : "translateX(0%)",
-    zIndex: isLoginPage ? 1 : 0,
     config: { duration: 400 }
   });
 
   const leftSideAnimation = useSpring({
-    transform: isLoginPage ? "translateX(150%)" : "translateX(0%)",
-    zIndex: isLoginPage ? 0 : 1,
+    transform: isLoginPage ? "translateX(140%)" : "translateX(0%)",
     config: { duration: 400 }
   });
 
@@ -36,22 +34,22 @@ function Signup() {
         </animated.div>
         {isLoginPage ? (
           <>
-            <input type="text" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input type="text" placeholder="Email" aria-label="Email" />
+            <input type="password" placeholder="Password" aria-label="Password" />
             <button className="register">Login</button>
-            <a href="#!" id="sign-in" onClick={toggleLoginPage}>
+            <button onClick={toggleLoginPage} style={{ cursor: "pointer", backgroundColor: "transparent", color: "white" }}>
               Don't have an account? Sign up here.
-            </a>
+            </button>
           </>
         ) : (
           <>
-            <input type="text" placeholder="Full Name" />
-            <input type="text" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input type="text" placeholder="Full Name" aria-label="Full Name" />
+            <input type="text" placeholder="Email" aria-label="Email" />
+            <input type="password" placeholder="Password" aria-label="Password" />
             <button className="register">Register</button>
-            <a href="#!" id="sign-in" onClick={toggleLoginPage}>
+            <button onClick={toggleLoginPage} style={{ cursor: "pointer", backgroundColor: "transparent", color: "white" }}>
               Already have an account? Login here.
-            </a>
+            </button>
           </>
         )}
       </animated.div>
