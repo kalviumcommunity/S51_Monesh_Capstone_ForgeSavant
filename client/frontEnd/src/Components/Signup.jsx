@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSpring, animated } from "@react-spring/web";
+import { useSpring, animated, config } from "@react-spring/web";
 import logo from "../assets/ForgeSavant1.png";
 import "../Styles/signup.css";
 
@@ -8,12 +8,13 @@ function Signup() {
 
   const rightSideAnimation = useSpring({
     transform: isLoginPage ? "translateX(-70%)" : "translateX(0%)",
-    config: { duration: 400 }
+    config: { duration: 500 }
   });
 
   const leftSideAnimation = useSpring({
     transform: isLoginPage ? "translateX(140%)" : "translateX(0%)",
-    config: { duration: 400 }
+    zIndex: 1,
+    config: { duration: 500 }
   });
 
   const toggleLoginPage = () => {

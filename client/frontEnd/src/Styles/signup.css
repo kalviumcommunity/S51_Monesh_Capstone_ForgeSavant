@@ -3,6 +3,7 @@
 .Signup {
     display: flex;
     height: 100vh;
+    background-color: black;
 }
 
 .left-side {
@@ -11,7 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: calc(50% - 150px);
+    max-width: calc(52% - 160px);
 }
 
 .logo {
