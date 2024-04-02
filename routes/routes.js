@@ -7,6 +7,7 @@ router.get("/amd", async (req, res) => {
     const amdprocessor = await AmdProcessor.find();
     res.json(amdprocessor);
   } catch (err) {
+    console.error("Error occurred while fetching data:", err);
     res.status(500).json({ message: "Error occurred while fetching data" });
   }
 });
