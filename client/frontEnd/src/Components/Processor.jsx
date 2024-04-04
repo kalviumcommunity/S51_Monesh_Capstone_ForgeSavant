@@ -45,6 +45,7 @@ const Processor = () => {
                     value={searchTerm}
                     onChange={handleSearchChange}
                 />
+                <button className="search-btn" type="submit">Search</button>
             </div>
             <div className="cpu">
                 {filteredCpu.map(cpu => (

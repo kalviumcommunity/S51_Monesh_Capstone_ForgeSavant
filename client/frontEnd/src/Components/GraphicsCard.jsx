@@ -45,6 +45,7 @@ const GraphicsCard = () => {
                     value={searchTerm}
                     onChange={handleSearchChange}
                 />
+                <button className="search-btn" type="submit">Search</button>
             </div>
             <div className="gpu">
                 {filteredGpu.map(gpu => (

@@ -1,113 +1,224 @@
-/* processor */
+/* General Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Processor */
+
+#processor {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
 .cpu {
     display: flex;
-    overflow-x: scroll;
-    justify-content: flex-start; 
+    flex-wrap: wrap;
     gap: 20px;
-    padding: 20px;
+    justify-content: center;
 }
 
 .cpucomp {
-    min-width: 400px; 
+    width: 300px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cpucomp:hover {
+    transform: translateY(-5px);
 }
 
 .cpucomp img {
     width: 100%;
-    border-radius: 8px;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
-#cpuDetails {
-    margin-top: 10px;
+.cpu-details {
+    padding: 20px;
 }
 
-#cpuDetails h3 {
-    font-size: 1.2rem;
+.cpu-details h3 {
+    font-size: 1.4rem;
     margin-bottom: 5px;
 }
 
-#cpuDetails p {
+.cpu-details p {
     margin: 5px 0;
 }
 
 /* GPU */
 
+#graphic {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .gpu {
     display: flex;
-    overflow-x: scroll;
-    justify-content: flex-start; 
+    flex-wrap: wrap;
     gap: 20px;
-    padding: 20px;
+    justify-content: center;
 }
 
 .gpucomp {
-    min-width: 400px; 
+    width: 300px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gpucomp:hover {
+    transform: translateY(-5px);
 }
 
 .gpucomp img {
     width: 100%;
-    border-radius: 8px;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
-#gpuDetails {
-    margin-top: 10px;
+.gpu-details {
+    padding: 20px;
 }
 
-#gpuDetails h3 {
-    font-size: 1.2rem;
+.gpu-details h3 {
+    font-size: 1.4rem;
     margin-bottom: 5px;
 }
 
-#gpuDetails p {
+.gpu-details p {
     margin: 5px 0;
 }
 
 /* Model */
 
 .detailed-view {
-    display: flex;
-    flex-direction: row;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    width: 80%;
+    max-width: 600px;
+}
+
+.detailed-image {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .detailed-image img {
-    width: 100%;
-    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .detailed-details {
-    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.detailed-details h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.detailed-details p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.detailed-details button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.detailed-details button:hover {
+    background-color: #0056b3;
 }
 
 /* Search Input */
 
 .search {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search input {
-    padding: 10px;
+    padding: 12px;
     width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 13px;
+    border: 2px solid #007bff;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #555;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.search input::placeholder {
+    color: #aaa;
+}
+
+.search input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.search-btn {
+    padding: 12px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
 }
