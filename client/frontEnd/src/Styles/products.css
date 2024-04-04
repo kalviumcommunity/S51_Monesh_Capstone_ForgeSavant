@@ -1,0 +1,70 @@
+/* processor */
+.cpu {
+    display: flex;
+    overflow-x: scroll;
+    justify-content: flex-start; 
+    gap: 20px;
+}
+
+.cpucomp {
+    min-width: 400px; 
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cpucomp img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+#cpuDetails {
+    margin-top: 10px;
+}
+
+#cpuDetails h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+#cpuDetails p {
+    margin: 5px 0;
+}
+
+/* GPU */
+
+.gpu {
+    display: flex;
+    overflow-x: scroll;
+    justify-content: flex-start; 
+    gap: 20px;
+}
+
+.gpucomp {
+    min-width: 400px; 
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gpucomp img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+#gpuDetails {
+    margin-top: 10px;
+}
+
+#gpuDetails h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+#gpuDetails p {
+    margin: 5px 0;
+}
