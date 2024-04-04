@@ -4,6 +4,7 @@
     overflow-x: scroll;
     justify-content: flex-start; 
     gap: 20px;
+    padding: 20px;
 }
 
 .cpucomp {
@@ -40,6 +41,7 @@
     overflow-x: scroll;
     justify-content: flex-start; 
     gap: 20px;
+    padding: 20px;
 }
 
 .gpucomp {
@@ -67,4 +69,29 @@
 
 #gpuDetails p {
     margin: 5px 0;
+}
+
+/* Model */
+
+.detailed-view {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.detailed-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.detailed-details {
+    margin-top: 20px;
 }
