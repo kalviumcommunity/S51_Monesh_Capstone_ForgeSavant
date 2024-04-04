@@ -8,6 +8,13 @@ const Storage = require("../models/storage.model")
 const smps = require("../models/smps.model")
 const cabinets = require("../models/cabinet.model")
 
+router.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
 router.get("/GPU/:id", async (req, res) => {
   try {
     const gpuId = req.params.id;

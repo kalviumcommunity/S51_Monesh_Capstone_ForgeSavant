@@ -12,14 +12,12 @@
   "dependencies": {
     "@react-spring/parallax": "^9.7.3",
     "@react-spring/web": "^9.7.3",
+    "axios": "^1.6.8",
     "install": "^0.13.0",
     "npm": "^10.5.0",
     "react": "^18.2.0",
-    "react-custom-scrollbars": "^4.2.1",
-    "react-custom-scrollbars-2": "^4.5.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3",
-    "react-spinners": "^0.13.8"
+    "react-router-dom": "^6.22.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.64",
