@@ -1,24 +1,41 @@
 import React, { useState } from "react";
-import { useSpring, animated, config } from "@react-spring/web";
+import { useSpring, animated } from "@react-spring/web";
 import logo from "../assets/ForgeSavant1.png";
 import "../Styles/signup.css";
 
 function Signup() {
   const [isLoginPage, setIsLoginPage] = useState(false);
 
+  const slideInRight = {
+    from: { transform: "translateX(100%)" },
+    to: { transform: "translateX(0%)" },
+  };
+
+  const slideInLeft = {
+    from: { transform: "translateX(-100%)" },
+    to: { transform: "translateX(0%)" },
+  };
+
   const rightSideAnimation = useSpring({
-    transform: isLoginPage ? "translateX(-70%)" : "translateX(0%)",
-    config: { duration: 500 }
+    to: { transform: isLoginPage ? "translateX(-70%)" : "translateX(0%)" },
+    config: { duration: 600 },
+    from: slideInRight,
+    reset: true,
   });
 
   const leftSideAnimation = useSpring({
-    transform: isLoginPage ? "translateX(140%)" : "translateX(0%)",
-    zIndex: 1,
-    config: { duration: 500 }
+    to: { transform: isLoginPage ? "translateX(140%)" : "translateX(0%)", zIndex: 1 },
+    config: { duration: 700 },
+    from: slideInLeft,
+    reset: true,
   });
 
   const toggleLoginPage = () => {
     setIsLoginPage(!isLoginPage);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
   };
 
   return (
@@ -33,26 +50,28 @@ function Signup() {
             {isLoginPage ? "Login to your account" : "Sign up to get started"}
           </p>
         </animated.div>
-        {isLoginPage ? (
-          <>
-            <input type="text" placeholder="Email" aria-label="Email" />
-            <input type="password" placeholder="Password" aria-label="Password" />
-            <button className="register">Login</button>
-            <button onClick={toggleLoginPage} style={{ cursor: "pointer", backgroundColor: "transparent", color: "white" }}>
-              Don't have an account? Sign up here.
-            </button>
-          </>
-        ) : (
-          <>
-            <input type="text" placeholder="Full Name" aria-label="Full Name" />
-            <input type="text" placeholder="Email" aria-label="Email" />
-            <input type="password" placeholder="Password" aria-label="Password" />
-            <button className="register">Register</button>
-            <button onClick={toggleLoginPage} style={{ cursor: "pointer", backgroundColor: "transparent", color: "white" }}>
-              Already have an account? Login here.
-            </button>
-          </>
-        )}
+        <form onSubmit={handleFormSubmit} className="form">
+          {isLoginPage ? (
+            <>
+              <input type="text" name="email" placeholder="Email" aria-label="Email" />
+              <input type="password" name="password" placeholder="Password" aria-label="Password" />
+              <button type="submit" className="register">Login</button>
+              <button type="button" onClick={toggleLoginPage} style={{ cursor: "pointer", backgroundColor: "transparent", color: "white" }}>
+                Don't have an account? Sign up here.
+              </button>
+            </>
+          ) : (
+            <>
+              <input type="text" name="fullname" placeholder="Full Name" aria-label="Full Name" />
+              <input type="text" name="email" placeholder="Email" aria-label="Email" />
+              <input type="password" name="password" placeholder="Password" aria-label="Password" />
+              <button type="submit" className="register">Register</button>
+              <button type="button" onClick={toggleLoginPage} style={{ cursor: "pointer", backgroundColor: "transparent", color: "white" }}>
+                Already have an account? Login here.
+              </button>
+            </>
+          )}
+        </form>
       </animated.div>
     </div>
   );

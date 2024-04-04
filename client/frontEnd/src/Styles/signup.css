@@ -39,16 +39,22 @@
 }
 
 .signup-text {
-    /* font-family: sans-serif; */
+    font-family: 'Russo One', sans-serif;
     font-size: 16px;
     margin-bottom: 20px;
     margin-left: 0;
 }
 
-.right-side input,
-.right-side button {
+.right-side form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.right-side input {
     font-family: 'Russo One', sans-serif;
-    width: 50%;
+    width: 80%;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -56,6 +62,12 @@
 }
 
 .right-side button {
+    font-family: 'Russo One', sans-serif;
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
     background-color: #007bff;
     color: white;
     cursor: pointer;
@@ -65,6 +77,15 @@
     background-color: #0056b3;
 }
 
-.head{
-    margin-right: 30%;
+.right-side button[type="button"] {
+    width: auto;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.head {
+    margin-right: 58%;
 }
