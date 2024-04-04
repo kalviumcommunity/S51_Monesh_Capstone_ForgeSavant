@@ -5,6 +5,7 @@ import '../Styles/products.css';
 const GraphicsCard = () => {
     const [gpu, setGpu] = useState([]);
     const [selectedGpu, setSelectedGpu] = useState(null);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         const fetchGpu = async () => {
@@ -22,15 +23,31 @@ const GraphicsCard = () => {
         setSelectedGpu(selectedGpu);
     };
 
-    // Function to close the detailed view
     const closeDetails = () => {
         setSelectedGpu(null);
     };
 
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const filteredGpu = gpu.filter((gpu) =>
+        gpu.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <>
+            <h1 id="graphic">Graphic Cards</h1>
+            <div className="search">
+                <input
+                    type="text"
+                    placeholder="Search by Graphic Card Name"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                />
+            </div>
             <div className="gpu">
-                {gpu.map(gpu => (
+                {filteredGpu.map(gpu => (
                     <div key={gpu._id} className="gpucomp" onClick={() => handleGpuClick(gpu)}>
                         <div className="gpu-image"><img src={gpu.image_url} alt={gpu.name} /></div>
                         <div className="gpu-details">

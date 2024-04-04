@@ -5,6 +5,7 @@ import '../Styles/products.css';
 const Processor = () => {
     const [cpu, setCpu] = useState([]);
     const [selectedCpu, setSelectedCpu] = useState(null);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         const fetchCpu = async () => {
@@ -18,20 +19,35 @@ const Processor = () => {
         fetchCpu();
     }, []);
 
-    // Function to handle click on a product
     const handleProductClick = (cpu) => {
         setSelectedCpu(cpu);
     };
 
-    // Function to close the detailed view
     const closeDetails = () => {
         setSelectedCpu(null);
     };
 
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const filteredCpu = cpu.filter((cpu) =>
+        cpu.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <>
+            <h1 id="processor">Processors</h1>
+            <div className="search">
+                <input
+                    type="text"
+                    placeholder="Search by Processor Name"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                />
+            </div>
             <div className="cpu">
-                {cpu.map(cpu => (
+                {filteredCpu.map(cpu => (
                     <div key={cpu._id} className="cpucomp" onClick={() => handleProductClick(cpu)}>
                         <div id="image"><img src={cpu.image_url} alt={cpu.name} /></div>
                         <div id="cpuDetails">

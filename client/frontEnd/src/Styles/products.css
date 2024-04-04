@@ -1,4 +1,5 @@
 /* processor */
+
 .cpu {
     display: flex;
     overflow-x: scroll;
@@ -75,6 +76,7 @@
 
 .detailed-view {
     display: flex;
+    flex-direction: row;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -94,4 +96,18 @@
 
 .detailed-details {
     margin-top: 20px;
+}
+
+/* Search Input */
+
+.search {
+    margin-bottom: 20px;
+}
+
+.search input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 13px;
 }
