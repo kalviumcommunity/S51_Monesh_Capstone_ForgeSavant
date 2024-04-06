@@ -50,7 +50,7 @@ const Processor = () => {
             <div className="cpu">
                 {filteredCpu.map(cpu => (
                     <div key={cpu._id} className="cpucomp" onClick={() => handleProductClick(cpu)}>
-                        <div id="image"><img src={cpu.image_url} alt={cpu.name} /></div>
+                        <div id="image"><img src={cpu.image_url} alt="" /></div>
                         <div id="cpuDetails">
                             <h3>{cpu.name}</h3>
                             <p>Type: {cpu.type}</p>
@@ -79,3 +79,4 @@ const Processor = () => {
 };
 
 export default Processor;
+

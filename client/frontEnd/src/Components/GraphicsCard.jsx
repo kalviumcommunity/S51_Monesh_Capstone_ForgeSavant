@@ -50,7 +50,7 @@ const GraphicsCard = () => {
             <div className="gpu">
                 {filteredGpu.map(gpu => (
                     <div key={gpu._id} className="gpucomp" onClick={() => handleGpuClick(gpu)}>
-                        <div className="gpu-image"><img src={gpu.image_url} alt={gpu.name} /></div>
+                        <div className="gpu-image"><img src={gpu.image_url} alt="" /></div>
                         <div className="gpu-details">
                             <h3>{gpu.name}</h3>
                             <p>Type: {gpu.type}</p>
