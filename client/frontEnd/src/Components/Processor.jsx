@@ -53,7 +53,6 @@ const Processor = () => {
                         <div id="image"><img src={cpu.image_url} alt="" /></div>
                         <div id="cpuDetails">
                             <h3>{cpu.name}</h3>
-                            <p>Type: {cpu.type}</p>
                             <p>Manufacturer: {cpu.manufacturer}</p>
                             <p>Price: ${cpu.price}</p>
                         </div>
@@ -70,6 +69,8 @@ const Processor = () => {
                         <p>Type: {selectedCpu.type}</p>
                         <p>Manufacturer: {selectedCpu.manufacturer}</p>
                         <p>Price: ${selectedCpu.price}</p>
+                        <p>Cores: {selectedCpu.specifications.cores}</p>
+                        <p>Threads: {selectedCpu.specifications.threads}</p>
                         <button onClick={closeDetails}>Close</button>
                     </div>
                 </div>
