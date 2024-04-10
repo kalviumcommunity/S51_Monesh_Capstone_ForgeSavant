@@ -4,6 +4,7 @@
 .page1{
   background-image: url('../assets/landingBackground.png');
   background-size: cover;
+  background-position: center;
   height: 100vh;
   color: white;
   display: flex;
@@ -33,6 +34,7 @@
 .section2{
   background-image: url('../assets/Background2.png');
   background-size: cover;
+  background-position: center;
   height: 100vh;
   color: white;
   display: flex;
