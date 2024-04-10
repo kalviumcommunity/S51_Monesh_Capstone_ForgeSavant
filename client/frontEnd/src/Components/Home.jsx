@@ -15,10 +15,6 @@ const Home = () => {
       <div className="page1">
         <h1>Forge</h1>
         <h1>Savant</h1>
-        <img src={processor} alt="" id="cpu-img"/>
-        <img src={graphicsCard} alt="" id="gpu-img"/>
-        <img src={ram} alt="" id="ram-img" />
-        <img src={smps} alt="" id="smps-img"/>
       </div>
       <div className="page2 section2">
         <h1>Welcome to Forge Savant!</h1>

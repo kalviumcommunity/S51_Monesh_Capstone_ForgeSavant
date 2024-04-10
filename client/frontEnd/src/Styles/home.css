@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Kotta+One&family=Russo+One&display=swap');
 
 .page1{
   background-image: url('../assets/landingBackground.png');
@@ -41,5 +42,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "Russo One";
+  font-family: "Russo One"; 
+  margin: auto;
+}
+
+.section2 h1{
+  font-size: 50px;
+  width: 40vw;
+  text-align: center;
+}
+
+.section2 p{
+  font-family: "Kotta One", serif;
+  font-size: 17px;
+  width: 50vw;
+  margin-top: 20px;
+  text-align: center;
 }
