@@ -2,23 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import "../Styles/home.css";
-import processor from "../assets/processor.png";
-import graphicsCard from "../assets/graphicsCard.png";
-import ram from "../assets/RGB-Ram.png";
-import smps from "../assets/smps.png";
 
 const Home = () => {
   
-
   return (
     <>
       <div className="page1">
         <h1>Forge</h1>
         <h1>Savant</h1>
-        <img src={processor} alt="" id="cpu-img"/>
-        <img src={graphicsCard} alt="" id="gpu-img"/>
-        <img src={ram} alt="" id="ram-img" />
-        <img src={smps} alt="" id="smps-img"/>
       </div>
       <div className="page2 section2">
         <h1>Welcome to Forge Savant!</h1>
