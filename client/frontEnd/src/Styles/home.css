@@ -1,64 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Russo+One&display=swap');
 
-.home-container {
+.page1{
+  background-image: url('../assets/landingBackground.png');
+  background-size: cover;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Kaushan Script", cursive;
+  font-weight: 900;
+  font-size: 40px;
+}
+
+.page1 img{
+  z-index: 0;
+  position: absolute;
+}
+
+.page1 h1{
+  margin-right: 10%;
+  transform: rotate(-7deg);
+  z-index: 1;
+}
+
+.page1 h1:nth-child(2){
+  margin-left: 17%;
+}
+
+.section2{
+  background-image: url('../assets/Background2.png');
+  background-size: cover;
+  height: 100vh;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-}
-
-.content {
-  height: 100vh;
-}
-
-.content img {
-  padding-top: 10px;
-  height: 35rem;
-  margin: auto;
-}
-
-
-.navbar {
-  display: flex;
-  align-items: center;
-  font-family: 'Russo one';
-  padding: 40px 130px;
-  justify-content: space-between;
-}
-
-.logo {
-  height: 40px;
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-right img {
-  padding-left: 100px;
-  height: 30px;
-}
-
-.side-navbar {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #f0f0f0;
-  width: 100%;
-  padding: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-}
-
-.side-navbar a {
-  padding: 8px 16px;
-  text-decoration: none;
-  color: #333;
-}
-
-.side-navbar a:hover {
-  background-color: #ddd;
+  font-family: "Russo One";
 }

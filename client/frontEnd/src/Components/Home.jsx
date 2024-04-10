@@ -2,72 +2,69 @@ import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import "../Styles/home.css";
-import content1 from "../assets/Content1.png";
-import content2 from "../assets/Content2.png";
-import logo from "../assets/ForgeSavant1.png";
-import menu from "../assets/Menu.png";
+import processor from "../assets/processor.png";
+import graphicsCard from "../assets/graphicsCard.png";
+import ram from "../assets/RGB-Ram.png";
+import smps from "../assets/smps.png";
 
 const Home = () => {
-  const [showSideNav, setShowSideNav] = useState(false);
-
-  const animation1 = useSpring({
-    from: { opacity: 0, transform: "translateY(20px)" },
-    to: { opacity: 1, transform: "translateY(0)" },
-    config: { duration: 1000 },
-  });
-
-  const animation2 = useSpring({
-    from: { opacity: 0, transform: "translateY(10px)" },
-    to: { opacity: 1, transform: "translateY(0)" },
-  });
-
-  const toggleSideNav = () => {
-    setShowSideNav(!showSideNav);
-  };
-
-  useEffect(() => {
-    const handleToggle = () => {
-      setShowSideNav((prev) => !prev);
-    };
-
-    document.addEventListener("click", handleToggle);
-
-    return () => {
-      document.removeEventListener("click", handleToggle);
-    };
-  }, []);
+  
 
   return (
     <>
-      <animated.div style={animation1} className="navbar">
-        <div className="navbar-left">
-          <img src={logo} alt="Logo" className="logo" />
-        </div>
-        <div className="navbar-right">
-          <p>HOME</p>
-          <img
-            src={menu}
-            alt="Menu"
-            className="menu-icon"
-            onClick={toggleSideNav}
-          />
-        </div>
-        {showSideNav && (
-          <div className="side-navbar">
-            <a href="/">Home</a>
-            <a href="/">About</a>
-            <a href="/">COMP</a>
-          </div>
-        )}
-      </animated.div>
-      <animated.div style={animation2} className="home-container">
-        <div className="content">
-          <img src={content1} alt="Content1" className="content1" />
-        </div>
-        <div className="content">
-          <img src={content2} alt="Content2" className="content2" />
-        </div>
-      </animated.div>
+      <div className="page1">
+        <h1>Forge</h1>
+        <h1>Savant</h1>
+        <img src={processor} alt="" id="cpu-img"/>
+        <img src={graphicsCard} alt="" id="gpu-img"/>
+        <img src={ram} alt="" id="ram-img" />
+        <img src={smps} alt="" id="smps-img"/>
+      </div>
+      <div className="page2 section2">
+        <h1>Welcome to Forge Savant!</h1>
+        <p>Forge Savant is your go-to destination 
+          for crafting the perfect PC tailored to 
+          your desires. Whether you're a gaming 
+          enthusiast, a creative professional, or 
+          a tech-savvy user, Forge Savant 
+          empowers you to build your dream rig 
+          effortlessly.</p>
+      </div>
+      <div className="page3 section2">
+        <h1>Why Choose Forge Savant?</h1>
+      </div>
+      <div className="page4 section2">
+        <h1>Seamless Component Selection</h1>
+        <p>Choose from a curated selection of 
+          top-tier processors, graphics cards, 
+          motherboards, RAM, storage, power 
+          supplies, and cabinets.</p>
+      </div>
+      <div className="page5 section2">
+        <h1>Intelligent Compatibility Checks</h1>
+        <p>Our cutting-edge compatibility checker 
+          ensures that every component you select 
+          works harmoniously together, eliminating 
+          any guesswork.</p>
+      </div>
+      <div className="page6 section2">
+        <h1>Real-Time Performance Insights</h1>
+        <p>Dive into real-time benchmark scores and 
+          performance metrics for each component, 
+          empowering you to make informed decisions.</p>
+      </div>
+      <div className="page7 section2">
+        <h1>Intuitive User Interface</h1>
+        <p>Our user-friendly interface guides you 
+          through the PC building process, whether 
+          you're a novice or an experienced builder.</p>
+      </div>
+      <div className="page8 section2">
+        <h1>Compare Your Options</h1>
+        <p>Compare and contrast multiple components 
+          side by side, finding the perfect balance 
+          between performance, aesthetics, and budget.</p>
+      </div>
     </>
   );
 };
