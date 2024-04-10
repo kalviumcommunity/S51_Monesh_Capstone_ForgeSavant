@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Russo+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Kotta+One&family=Russo+One&display=swap');
 
-.page1{
+:root {
+  --font-primary: 'Russo One', sans-serif;
+  --font-secondary: 'Kotta One', serif;
+}
+
+.page1 {
   background-image: url('../assets/landingBackground.png');
   background-size: cover;
   background-position: center;
@@ -13,26 +16,27 @@
   justify-content: center;
   align-items: center;
   font-family: "Kaushan Script", cursive;
+  font-style: normal;
   font-weight: 900;
-  font-size: 40px;
+  font-size: 3rem; /* Using rem for relative font size */
 }
 
-.page1 img{
+.page1 img {
   z-index: 0;
   position: absolute;
 }
 
-.page1 h1{
+.page1 h1 {
   margin-right: 10%;
   transform: rotate(-7deg);
   z-index: 1;
 }
 
-.page1 h1:nth-child(2){
+.page1 h1:nth-child(2) {
   margin-left: 17%;
 }
 
-.section2{
+.section2 {
   background-image: url('../assets/Background2.png');
   background-size: cover;
   background-position: center;
@@ -42,20 +46,46 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "Russo One"; 
+  font-family: var(--font-primary);
   margin: auto;
 }
 
-.section2 h1{
-  font-size: 50px;
-  width: 40vw;
+.section2 h1 {
+  font-size: 3.5rem; /* Using rem for relative font size */
+  width: 80%; /* Adjusted width for responsiveness */
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section2 p {
+  font-family: var(--font-secondary);
+  font-size: 1.5rem; /* Using rem for relative font size */
+  width: 80%; /* Adjusted width for responsiveness */
+  margin-top: 1rem;
   text-align: center;
 }
 
-.section2 p{
-  font-family: "Kotta One", serif;
-  font-size: 17px;
-  width: 50vw;
-  margin-top: 20px;
-  text-align: center;
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .section2 h1 {
+    font-size: 2.5rem;
+    width: 90%;
+  }
+
+  .section2 p {
+    font-size: 1.25rem;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section2 h1 {
+    font-size: 2rem;
+    width: 100%;
+  }
+
+  .section2 p {
+    font-size: 1rem;
+    width: 100%;
+  }
 }

@@ -2,14 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import "../Styles/home.css";
-import processor from "../assets/processor.png";
-import graphicsCard from "../assets/graphicsCard.png";
-import ram from "../assets/RGB-Ram.png";
-import smps from "../assets/smps.png";
 
 const Home = () => {
   
-
   return (
     <>
       <div className="page1">
