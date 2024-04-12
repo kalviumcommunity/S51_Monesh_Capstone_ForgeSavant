@@ -15,6 +15,36 @@ router.use((req, res, next) => {
   next();
 });
 
+// Endpoint to check compatibility
+router.post("/checkCompatibility", async (req, res) => {
+  try {
+    const { processor, motherboard, graphicsCard, ram, storage, smps, cabinet } = req.body.selectedComponents;
+
+    const compatibilityResult = {
+      compatible: [],
+      incompatible: []
+    };
+
+    if (processor && motherboard && graphicsCard && ram && storage && smps && cabinet) {
+      const processorSocket = await Processor.findById(processor);
+      const motherboardSocket = await Motherboard.findById(motherboard);
+
+      if (processorSocket.specifications.socket === motherboardSocket.specifications.socketType) {
+        compatibilityResult.compatible.push("Processor and Motherboard are compatible");
+      } else {
+        compatibilityResult.incompatible.push("Processor and Motherboard are not compatible");
+      }
+
+      res.json(compatibilityResult);
+    } else {
+      res.status(400).json({ error: "Please select all components" });
+    }
+  } catch (err) {
+    console.error("Error checking compatibility:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 // GPU
 router.get("/GPU/:id", async (req, res) => {
   try {

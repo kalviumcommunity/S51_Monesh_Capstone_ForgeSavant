@@ -76,12 +76,10 @@ const Build = () => {
         setCurrentStep(8);
     };
 
-    // If all components are selected, redirect to compatibility page
     if (currentStep === 8) {
         return <CompatibilityPage selectedComponents={selectedComponents} />;
     }
 
-    // Render the corresponding component based on the current step
     switch (currentStep) {
         case 1:
             return <Processor onSelect={handleProcessorSelect} />;
