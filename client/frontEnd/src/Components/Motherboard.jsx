@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import '../Styles/products.css';
 
-const Motherboard = () => {
+const Motherboard = ({ onSelect }) => {
     const [motherboards, setMotherboards] = useState([]);
     const [selectedMotherboard, setSelectedMotherboard] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
@@ -21,6 +21,10 @@ const Motherboard = () => {
 
     const handleProductClick = (motherboard) => {
         setSelectedMotherboard(motherboard);
+    };
+
+    const handleSelect = () => {
+        onSelect(selectedMotherboard);
     };
 
     const closeDetails = () => {
@@ -71,6 +75,7 @@ const Motherboard = () => {
                         <p>Price: ${selectedMotherboard.price}</p>
                         <p>Socket: {selectedMotherboard.specifications.socket}</p>
                         <p>Form Factor: {selectedMotherboard.specifications.form_factor}</p>
+                        <button onClick={handleSelect}>Select</button>
                         <button onClick={closeDetails}>Close</button>
                     </div>
                 </div>

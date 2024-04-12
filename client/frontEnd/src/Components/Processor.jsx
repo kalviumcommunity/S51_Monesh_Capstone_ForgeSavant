@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import '../Styles/products.css';
 
-const Processor = () => {
+const Processor = ({ onSelect }) => {
     const [cpu, setCpu] = useState([]);
     const [selectedCpu, setSelectedCpu] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
@@ -19,8 +19,12 @@ const Processor = () => {
         fetchCpu();
     }, []);
 
-    const handleProductClick = (cpu) => {
-        setSelectedCpu(cpu);
+    const handleProductClick = (selectedCpu) => {
+        setSelectedCpu(selectedCpu);
+    };
+
+    const handleSelect = () => {
+        onSelect(selectedCpu);
     };
 
     const closeDetails = () => {
@@ -71,6 +75,7 @@ const Processor = () => {
                         <p>Price: ${selectedCpu.price}</p>
                         <p>Cores: {selectedCpu.specifications.cores}</p>
                         <p>Threads: {selectedCpu.specifications.threads}</p>
+                        <button onClick={handleSelect}>Select</button>
                         <button onClick={closeDetails}>Close</button>
                     </div>
                 </div>
@@ -80,4 +85,3 @@ const Processor = () => {
 };
 
 export default Processor;
-

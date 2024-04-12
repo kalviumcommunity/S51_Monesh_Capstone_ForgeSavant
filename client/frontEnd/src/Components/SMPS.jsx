@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import '../Styles/products.css';
 
-const SMPS = () => {
+const SMPS = ({ onSelect }) => {
     const [smpsList, setSMPSList] = useState([]);
     const [selectedSMPS, setSelectedSMPS] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
@@ -21,6 +21,10 @@ const SMPS = () => {
 
     const handleProductClick = (smps) => {
         setSelectedSMPS(smps);
+    };
+
+    const handleSelect = () => {
+        onSelect(selectedSMPS);
     };
 
     const closeDetails = () => {
@@ -70,6 +74,7 @@ const SMPS = () => {
                         <p>Manufacturer: {selectedSMPS.manufacturer}</p>
                         <p>Wattage: {selectedSMPS.specifications.wattage}</p>
                         <p>Price: ${selectedSMPS.price}</p>
+                        <button onClick={handleSelect}>Select</button>
                         <button onClick={closeDetails}>Close</button>
                     </div>
                 </div>

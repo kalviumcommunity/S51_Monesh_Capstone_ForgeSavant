@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import '../Styles/products.css';
 
-const Cabinet = () => {
+const Cabinet = ({ onSelect }) => {
     const [cabinets, setCabinets] = useState([]);
     const [selectedCabinet, setSelectedCabinet] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
@@ -21,6 +21,10 @@ const Cabinet = () => {
 
     const handleProductClick = (cabinet) => {
         setSelectedCabinet(cabinet);
+    };
+
+    const handleSelect = () => {
+        onSelect(selectedCabinet);
     };
 
     const closeDetails = () => {
@@ -70,6 +74,7 @@ const Cabinet = () => {
                         <p>Manufacturer: {selectedCabinet.manufacturer}</p>
                         <p>Type: {selectedCabinet.type}</p>
                         <p>Price: ${selectedCabinet.price}</p>
+                        <button onClick={handleSelect}>Select</button>
                         <button onClick={closeDetails}>Close</button>
                     </div>
                 </div>

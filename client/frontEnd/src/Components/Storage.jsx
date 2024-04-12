@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import '../Styles/products.css';
 
-const Storage = () => {
+const Storage = ({ onSelect }) => {
     const [storage, setStorage] = useState([]);
     const [selectedStorage, setSelectedStorage] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
@@ -19,8 +19,12 @@ const Storage = () => {
         fetchStorage();
     }, []);
 
-    const handleProductClick = (storage) => {
-        setSelectedStorage(storage);
+    const handleProductClick = (storageItem) => {
+        setSelectedStorage(storageItem);
+    };
+
+    const handleSelect = () => {
+        onSelect(selectedStorage);
     };
 
     const closeDetails = () => {
@@ -71,6 +75,7 @@ const Storage = () => {
                         <p>Manufacturer: {selectedStorage.manufacturer}</p>
                         <p>Price: ${selectedStorage.price}</p>
                         <p>Capacity: {selectedStorage.specifications.capacity}</p>
+                        <button onClick={handleSelect}>Select</button>
                         <button onClick={closeDetails}>Close</button>
                     </div>
                 </div>

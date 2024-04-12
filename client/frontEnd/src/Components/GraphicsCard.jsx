@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import '../Styles/products.css';
 
-const GraphicsCard = () => {
+const GraphicsCard = ({ onSelect }) => {
     const [gpu, setGpu] = useState([]);
     const [selectedGpu, setSelectedGpu] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
@@ -21,6 +21,10 @@ const GraphicsCard = () => {
 
     const handleGpuClick = (selectedGpu) => {
         setSelectedGpu(selectedGpu);
+    };
+
+    const handleSelect = () => {
+        onSelect(selectedGpu);
     };
 
     const closeDetails = () => {
@@ -72,6 +76,7 @@ const GraphicsCard = () => {
                             <p>Type: {selectedGpu.type}</p>
                             <p>Manufacturer: {selectedGpu.manufacturer}</p>
                             <p>Price: ${selectedGpu.price}</p>
+                            <button onClick={handleSelect}>Select</button>
                             <button onClick={closeDetails}>Close</button>
                         </div>
                     </div>
