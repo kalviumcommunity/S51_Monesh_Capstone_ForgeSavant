@@ -1,18 +1,19 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home";
+import Navbar from "./Components/Navbar";
 import './App.css'
-import Signup from "./Components/Signup";
-import Processor from "./Components/Processor";
-import GraphicsCard from "./Components/GraphicsCard";
 
 const App = () => {
   return (
-    <div>
-      {/* <Signup/> */}
-      <Home />
-      {/* <Processor/>
-      <GraphicsCard/> */}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<>
+          <Navbar />
+          <Home />
+        </>} />
+      </Routes>
+    </Router>
   );
 };
 

@@ -1,0 +1,40 @@
+:root {
+  --primary-color: #000000;
+  --secondary-color: #ff0000;
+  --font-family-primary: 'Roboto', sans-serif;
+  --font-family-secondary: 'Russo One', sans-serif;
+}
+
+.navbar {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-family: var(--font-family-primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar img {
+  max-height: 70px;
+}
+
+#build {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: var(--secondary-color);
+  color: #ffffff;
+  border-radius: 10px;
+  font-family: var(--font-family-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#build:hover {
+  background-color: #b30000;
+}
