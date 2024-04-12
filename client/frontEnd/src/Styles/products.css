@@ -108,6 +108,312 @@
     margin: 5px 0;
 }
 
+/* Motherboard */
+
+#motherboards {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.motherboards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.mbcomp {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.mbcomp:hover {
+    transform: translateY(-5px);
+}
+
+.mbcomp img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.mb-details {
+    padding: 20px;
+}
+
+.mb-details h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.mb-details p {
+    margin: 5px 0;
+}
+
+/* SMPS */
+
+#smps {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.smps-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.smps-comp {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.smps-comp:hover {
+    transform: translateY(-5px);
+}
+
+.smps-comp img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.smps-details {
+    padding: 20px;
+}
+
+.smps-details h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.smps-details p {
+    margin: 5px 0;
+}
+
+/* RAM */
+
+#ram {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.ram-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.ram-comp {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.ram-comp:hover {
+    transform: translateY(-5px);
+}
+
+.ram-comp img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.ram-details {
+    padding: 20px;
+}
+
+.ram-details h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.ram-details p {
+    margin: 5px 0;
+}
+
+/* SSD */
+
+#ssd {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.ssd-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.ssd-comp {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.ssd-comp:hover {
+    transform: translateY(-5px);
+}
+
+.ssd-comp img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.ssd-details {
+    padding: 20px;
+}
+
+.ssd-details h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.ssd-details p {
+    margin: 5px 0;
+}
+
+/* Storage */
+
+#storage {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.storage {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.storageComp {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.storageComp:hover {
+    transform: translateY(-5px);
+}
+
+#image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+#storageDetails {
+    padding: 20px;
+}
+
+#storageDetails h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+#storageDetails p {
+    margin: 5px 0;
+}
+
+/* Cabinet */
+
+#cabinet {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cabinet-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.cabinet-comp {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cabinet-comp:hover {
+    transform: translateY(-5px);
+}
+
+.cabinet-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.cabinet-details {
+    padding: 20px;
+}
+
+.cabinet-details h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.cabinet-details p {
+    margin: 5px 0;
+}
+
 /* Model */
 
 .detailed-view {
