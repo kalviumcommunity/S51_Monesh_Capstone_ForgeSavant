@@ -1,0 +1,61 @@
+/* compatibilityPage.css */
+
+.compatibility-page {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.compatibility-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.compatibility-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.compatible-components, .incompatible-components {
+    flex: 1;
+    padding: 10px;
+}
+
+.compatibility-subheader {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.component-list {
+    list-style: none;
+    padding: 0;
+}
+
+.component {
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 3px;
+}
+
+.loading {
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+}
+
+.error {
+    font-size: 18px;
+    color: red;
+    text-align: center;
+    padding: 20px;
+}
+
+.no-results {
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+}
