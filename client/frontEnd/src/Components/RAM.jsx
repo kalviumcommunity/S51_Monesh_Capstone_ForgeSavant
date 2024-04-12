@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import '../Styles/products.css';
 
-const RAM = () => {
+const RAM = ({ onSelect }) => {
     const [ramList, setRAMList] = useState([]);
     const [selectedRAM, setSelectedRAM] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
@@ -21,6 +21,10 @@ const RAM = () => {
 
     const handleProductClick = (ram) => {
         setSelectedRAM(ram);
+    };
+
+    const handleSelect = () => {
+        onSelect(selectedRAM);
     };
 
     const closeDetails = () => {
@@ -71,6 +75,7 @@ const RAM = () => {
                         <p>Capacity: {selectedRAM.specifications.capacity}</p>
                         <p>Speed: {selectedRAM.specifications.speed}</p>
                         <p>Price: ${selectedRAM.price}</p>
+                        <button onClick={handleSelect}>Select</button>
                         <button onClick={closeDetails}>Close</button>
                     </div>
                 </div>
