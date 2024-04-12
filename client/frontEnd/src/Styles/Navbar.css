@@ -1,3 +1,10 @@
+:root {
+  --primary-color: #000000;
+  --secondary-color: #ff0000;
+  --font-family-primary: 'Roboto', sans-serif;
+  --font-family-secondary: 'Russo One', sans-serif;
+}
+
 .navbar {
   display: flex;
   position: absolute;
@@ -5,9 +12,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #1a1a2e;
+  background-color: var(--primary-color);
   color: #ffffff;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-family-primary);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -18,10 +25,10 @@
 #build {
   padding: 12px 24px;
   font-size: 16px;
-  background-color: #7700ff;
+  background-color: var(--secondary-color);
   color: #ffffff;
-  border-radius: 25px;
-  font-family: 'Russo One';
+  border-radius: 10px;
+  font-family: var(--font-family-secondary);
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
@@ -29,10 +36,5 @@
 }
 
 #build:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-
-#build:active {
-  transform: scale(0.95);
+  background-color: #b30000;
 }
