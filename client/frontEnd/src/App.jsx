@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
+import Build from "./Components/Build";
 import './App.css'
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
           <Navbar />
           <Home />
         </>} />
+        <Route path="/build" element={<Build/>}/>
       </Routes>
     </Router>
   );
