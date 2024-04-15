@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 import logo from "../assets/ForgeSavant1.png";
 import "../Styles/signup.css";
 
@@ -24,7 +26,10 @@ function Signup() {
   });
 
   const leftSideAnimation = useSpring({
-    to: { transform: isLoginPage ? "translateX(140%)" : "translateX(0%)", zIndex: 1 },
+    to: {
+      transform: isLoginPage ? "translateX(140%)" : "translateX(0%)",
+      zIndex: 1,
+    },
     config: { duration: 700 },
     from: slideInLeft,
     reset: true,
@@ -40,10 +45,16 @@ function Signup() {
 
   return (
     <div className="Signup">
-      <animated.div className="left-side" style={{ ...leftSideAnimation, backgroundColor: 'white' }}>
+      <animated.div
+        className="left-side"
+        style={{ ...leftSideAnimation, backgroundColor: "white" }}
+      >
         <img src={logo} alt="logo" className="logo" />
       </animated.div>
-      <animated.div className="right-side" style={{ ...rightSideAnimation, backgroundColor: 'black' }}>
+      <animated.div
+        className="right-side"
+        style={{ ...rightSideAnimation, backgroundColor: "black" }}
+      >
         <animated.div className="head">
           <h3>{isLoginPage ? "Welcome Back!" : "Hello!"}</h3>
           <p className="signup-text">
@@ -53,20 +64,83 @@ function Signup() {
         <form onSubmit={handleFormSubmit} className="form">
           {isLoginPage ? (
             <>
-              <input type="text" name="email" placeholder="Email" aria-label="Email" />
-              <input type="password" name="password" placeholder="Password" aria-label="Password" />
-              <button type="submit" className="register">Login</button>
-              <button type="button" onClick={toggleLoginPage} style={{ cursor: "pointer", backgroundColor: "transparent", color: "white" }}>
+              <input
+                type="text"
+                name="email"
+                placeholder="Email"
+                aria-label="Email"
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                aria-label="Password"
+              />
+              <button type="submit" className="register">
+                Login
+              </button>
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  const decoded = jwtDecode(credentialResponse.credential);
+                  console.log(decoded);
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+              <button
+                type="button"
+                onClick={toggleLoginPage}
+                style={{
+                  cursor: "pointer",
+                  backgroundColor: "transparent",
+                  color: "white",
+                }}
+              >
                 Don't have an account? Sign up here.
               </button>
             </>
           ) : (
             <>
-              <input type="text" name="fullname" placeholder="Full Name" aria-label="Full Name" />
-              <input type="text" name="email" placeholder="Email" aria-label="Email" />
-              <input type="password" name="password" placeholder="Password" aria-label="Password" />
-              <button type="submit" className="register">Register</button>
-              <button type="button" onClick={toggleLoginPage} style={{ cursor: "pointer", backgroundColor: "transparent", color: "white" }}>
+              <input
+                type="text"
+                name="fullname"
+                placeholder="Full Name"
+                aria-label="Full Name"
+              />
+              <input
+                type="text"
+                name="email"
+                placeholder="Email"
+                aria-label="Email"
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                aria-label="Password"
+              />
+              <button type="submit" className="register">
+                Register
+              </button>
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  const decoded = jwtDecode(credentialResponse.credential);
+                  console.log(decoded);
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+              <button
+                type="button"
+                onClick={toggleLoginPage}
+                style={{
+                  cursor: "pointer",
+                  backgroundColor: "transparent",
+                  color: "white",
+                }}
+              >
                 Already have an account? Login here.
               </button>
             </>
