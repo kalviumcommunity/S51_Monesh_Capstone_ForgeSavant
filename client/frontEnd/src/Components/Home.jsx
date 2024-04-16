@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
+import { Link } from "react-router-dom";
 import "../Styles/home.css";
 
 const Home = () => {
@@ -98,6 +99,45 @@ const Home = () => {
           Compare and contrast multiple components side by side, finding the
           perfect balance between performance, aesthetics, and budget.
         </animated.p>
+      </div>
+
+      <div className="page9 section3">
+        <h1>How Forge Savant Works?</h1>
+      </div>
+
+      <div className="page10 section3">
+        <h1>Select Your Components</h1>
+        <p>Explore our diverse catalog and choose your preferred processor, 
+          graphics card, motherboard, RAM, storage, power supply, and 
+          cabinet.</p>
+      </div>
+
+      <div className="page11 section3">
+        <h1>Verify Compatibility</h1>
+        <p>Our advanced compatibility checker ensures that all your selected 
+          components fit seamlessly together, saving you time and 
+          frustration.</p>
+      </div>
+
+      <div className="page12 section3">
+        <h1>Analyze Performance</h1>
+        <p>Dive into detailed benchmarks and performance insights, allowing 
+          you to fine-tune your build for optimal results.</p>
+      </div>
+
+      <div className="page13 section3">
+        <h1>Build and Save Configurations</h1>
+        <p>Once satisfied, create your virtual build, save your configurations, 
+          and share them with friends or save for future projects.</p>
+      </div>
+
+      <div className="page14 section3">
+        <h1>Start Crafting Your PC Masterpiece Today!</h1>
+        <p>Ready to unleash your creativity and build a PC that matches your 
+          vision? Embark on your journey with Forge Savant today and 
+          experience the satisfaction of crafting your personalized 
+          powerhouse!</p>
+          <Link to="/build"><button id='build'>Forge your PC</button></Link>
       </div>
     </div>
   );
