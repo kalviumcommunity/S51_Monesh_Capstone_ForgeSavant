@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
+import { Link } from "react-router-dom";
 import "../Styles/home.css";
 
 const Home = () => {
@@ -46,7 +47,7 @@ const Home = () => {
         </animated.div>
       </div>
 
-      <div className="page2 section2">
+      <div className="page2 section2 shared-background">
         <animated.h1 style={isVisible ? appearIn : {}}>Welcome to Forge Savant!</animated.h1>
         <animated.p style={isVisible ? appearIn : {}}>
           Forge Savant is your go-to destination for crafting the perfect PC
@@ -56,11 +57,11 @@ const Home = () => {
         </animated.p>
       </div>
 
-      <div className="page3 section2">
+      <div className="page3 section2 shared-background">
         <animated.h1 style={isVisible ? appearIn : {}}>Why Choose Forge Savant?</animated.h1>
       </div>
 
-      <div className="page4 section2">
+      <div className="page4 section2 shared-background">
         <animated.h1 style={isVisible ? appearIn : {}}>Seamless Component Selection</animated.h1>
         <animated.p style={isVisible ? appearIn : {}}>
           Choose from a curated selection of top-tier processors, graphics
@@ -68,7 +69,7 @@ const Home = () => {
         </animated.p>
       </div>
 
-      <div className="page5 section2">
+      <div className="page5 section2 shared-background">
         <animated.h1 style={isVisible ? appearIn : {}}>Intelligent Compatibility Checks</animated.h1>
         <animated.p style={isVisible ? appearIn : {}}>
           Our cutting-edge compatibility checker ensures that every component
@@ -76,7 +77,7 @@ const Home = () => {
         </animated.p>
       </div>
 
-      <div className="page6 section2">
+      <div className="page6 section2 shared-background">
         <animated.h1 style={isVisible ? appearIn : {}}>Real-Time Performance Insights</animated.h1>
         <animated.p style={isVisible ? appearIn : {}}>
           Dive into real-time benchmark scores and performance metrics for
@@ -84,7 +85,7 @@ const Home = () => {
         </animated.p>
       </div>
 
-      <div className="page7 section2">
+      <div className="page7 section2 shared-background">
         <animated.h1 style={isVisible ? appearIn : {}}>Intuitive User Interface</animated.h1>
         <animated.p style={isVisible ? appearIn : {}}>
           Our user-friendly interface guides you through the PC building
@@ -92,12 +93,51 @@ const Home = () => {
         </animated.p>
       </div>
 
-      <div className="page8 section2">
+      <div className="page8 section2 shared-background">
         <animated.h1 style={isVisible ? appearIn : {}}>Compare Your Options</animated.h1>
         <animated.p style={isVisible ? appearIn : {}}>
           Compare and contrast multiple components side by side, finding the
           perfect balance between performance, aesthetics, and budget.
         </animated.p>
+      </div>
+
+      <div className="page9 section3 shared-background">
+        <h1>How Forge Savant Works?</h1>
+      </div>
+
+      <div className="page10 section3 shared-background">
+        <h1>Select Your Components</h1>
+        <p>Explore our diverse catalog and choose your preferred processor, 
+          graphics card, motherboard, RAM, storage, power supply, and 
+          cabinet.</p>
+      </div>
+
+      <div className="page11 section3 shared-background">
+        <h1>Verify Compatibility</h1>
+        <p>Our advanced compatibility checker ensures that all your selected 
+          components fit seamlessly together, saving you time and 
+          frustration.</p>
+      </div>
+
+      <div className="page12 section3 shared-background">
+        <h1>Analyze Performance</h1>
+        <p>Dive into detailed benchmarks and performance insights, allowing 
+          you to fine-tune your build for optimal results.</p>
+      </div>
+
+      <div className="page13 section3 shared-background">
+        <h1>Build and Save Configurations</h1>
+        <p>Once satisfied, create your virtual build, save your configurations, 
+          and share them with friends or save for future projects.</p>
+      </div>
+
+      <div className="page14 section3 shared-background">
+        <h1>Start Crafting Your PC Masterpiece Today!</h1>
+        <p>Ready to unleash your creativity and build a PC that matches your 
+          vision? Embark on your journey with Forge Savant today and 
+          experience the satisfaction of crafting your personalized 
+          powerhouse!</p>
+          <Link to="/build"><button id='build'>Forge your PC</button></Link>
       </div>
     </div>
   );
