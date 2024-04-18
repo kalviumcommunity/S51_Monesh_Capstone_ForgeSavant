@@ -13,18 +13,81 @@ const CompatibilityPage = ({ selectedComponents }) => {
                 const compatible = [];
                 const incompatible = [];
 
-                // Check if both processor and motherboard are selected
+                // Processor and Motherboard Compatibility Check
                 if (selectedComponents.processor && selectedComponents.motherboard) {
                     const processorSocket = selectedComponents.processor.specifications.socket;
                     const motherboardSocket = selectedComponents.motherboard.specifications.socket;
 
-                    // Example compatibility check: Processor and motherboard sockets match
                     if (processorSocket === motherboardSocket) {
                         compatible.push(selectedComponents.processor);
-                        compatible.push(selectedComponents.motherboard);
                     } else {
                         incompatible.push(selectedComponents.processor);
+                    }
+                }
+
+                // Graphics Card and Motherboard Compatibility Check
+                if (selectedComponents.graphicsCard && selectedComponents.motherboard) {
+                    const pcie = selectedComponents.motherboard.specifications.pcie_slots;
+
+                    if(pcie){
+                        compatible.push(selectedComponents.graphicsCard);
+                    }else{
+                        incompatible.push(selectedComponents.graphicsCard);
+                    }
+                }
+
+                // SSD and Motherboard Compatibility Check
+                if (selectedComponents.storage && selectedComponents.motherboard) {
+                    const ssdInterface = selectedComponents.storage.specifications.interface;
+                    const motherboardM2 = selectedComponents.motherboard.specifications.m2_slots;
+                    const motherboardSATA = selectedComponents.motherboard.specifications.sata_ports;
+
+                    if(motherboardM2 && ssdInterface === "NVMe"){
+                        compatible.push(selectedComponents.storage);
+                    }else if (motherboardSATA && ssdInterface === "SATA"){
+                        compatible.push(selectedComponents.storage);
+                    }else{
+                        incompatible.push(selectedComponents.storage);
+                    }
+                }
+
+                // RAM and Motherboard Compatibility Check
+                if (selectedComponents.ram && selectedComponents.motherboard) {
+                    const ramType = selectedComponents.ram.specifications.type;
+                    const motherboardRamType = selectedComponents.motherboard.specifications.ram_type;
+
+                    if (ramType === motherboardRamType) {
+                        compatible.push(selectedComponents.ram);
+                    } else {
+                        incompatible.push(selectedComponents.ram);
+                    }
+                }
+
+                // SMPS and Cabinet Compatibility Check
+                if (selectedComponents.smps && selectedComponents.cabinet) {
+                    const smpsFormFactor = selectedComponents.smps.specifications.form_factor;
+                    const cabinetSmpsFormFactor = selectedComponents.cabinet.specifications.motherboard_support;
+                    const cabinetFormFactor = cabinetSmpsFormFactor.split(", ");
+
+                    if (cabinetFormFactor.includes(smpsFormFactor)) {
+                        compatible.push(selectedComponents.smps);
+                    } else {
+                        incompatible.push(selectedComponents.smps);
+                    }
+                }
+
+                // Motherboard and Cabinet Compatibility Check
+                if (selectedComponents.motherboard && selectedComponents.cabinet) {
+                    const motherboardFormFactors = selectedComponents.motherboard.specifications.form_factor;
+                    const cabinetMotherboardFormFactor = selectedComponents.cabinet.specifications.motherboard_support;
+                    const cabinetFormFactor = cabinetMotherboardFormFactor.split(", ");
+
+                    if (cabinetFormFactor.includes(motherboardFormFactors)) {
+                        compatible.push(selectedComponents.motherboard);
+                        compatible.push(selectedComponents.cabinet);
+                    } else {
                         incompatible.push(selectedComponents.motherboard);
+                        incompatible.push(selectedComponents.cabinet);
                     }
                 }
 
@@ -82,4 +145,3 @@ const CompatibilityPage = ({ selectedComponents }) => {
 };
 
 export default CompatibilityPage;
-    
