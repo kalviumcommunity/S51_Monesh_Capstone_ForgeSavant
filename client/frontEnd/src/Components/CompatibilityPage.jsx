@@ -28,7 +28,7 @@ const CompatibilityPage = ({ selectedComponents }) => {
                 // Graphics Card and Motherboard Compatibility Check
                 if (selectedComponents.graphicsCard && selectedComponents.motherboard) {
                     const pcie = selectedComponents.motherboard.specifications.pcie_slots;
-                    
+
                     if(pcie){
                         compatible.push(selectedComponents.graphicsCard);
                     }else{
@@ -42,9 +42,9 @@ const CompatibilityPage = ({ selectedComponents }) => {
                     const motherboardM2 = selectedComponents.motherboard.specifications.m2_slots;
                     const motherboardSATA = selectedComponents.motherboard.specifications.sata_ports;
 
-                    if(motherboardM2 && ssdInterface == "NVMe"){
+                    if(motherboardM2 && ssdInterface === "NVMe"){
                         compatible.push(selectedComponents.storage);
-                    }else if (motherboardSATA && ssdInterface == "SATA"){
+                    }else if (motherboardSATA && ssdInterface === "SATA"){
                         compatible.push(selectedComponents.storage);
                     }else{
                         incompatible.push(selectedComponents.storage);
