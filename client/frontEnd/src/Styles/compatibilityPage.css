@@ -1,61 +1,48 @@
-/* compatibilityPage.css */
-
+/* Compatibility Page container */
 .compatibility-page {
-    margin: 20px;
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    background-color: #f8f9fa;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
+/* Compatibility Header */
 .compatibility-header {
-    font-size: 24px;
-    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
 }
 
+/* Compatibility Results container */
 .compatibility-container {
+    margin-top: 20px;
+}
+
+/* Compatible and Incompatible Components */
+.compatibility-results {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.compatible-components, .incompatible-components {
-    flex: 1;
-    padding: 10px;
-}
-
-.compatibility-subheader {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
+/* List of Compatible and Incompatible Components */
 .component-list {
     list-style: none;
     padding: 0;
 }
 
 .component {
-    margin-bottom: 5px;
     padding: 5px 10px;
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    border-radius: 3px;
+    margin: 5px 0;
+    border-radius: 5px;
 }
 
-.loading {
-    font-size: 18px;
-    text-align: center;
-    padding: 20px;
+.compatible-components .component {
+    background-color: #dff0d8;
+    color: #3c763d;
 }
 
-.error {
-    font-size: 18px;
-    color: red;
-    text-align: center;
-    padding: 20px;
-}
-
-.no-results {
-    font-size: 18px;
-    text-align: center;
-    padding: 20px;
+.incompatible-components .component {
+    background-color: #f2dede;
+    color: #a94442;
 }
