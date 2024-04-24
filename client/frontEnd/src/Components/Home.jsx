@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "../Styles/home.css";
 
 const Home = () => {
-  const [isVisible, setIsVisible] = useState(false);
 
   const slideIn = useSpring({
     from: { transform: "translateX(-10%)", opacity: 0 },
