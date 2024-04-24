@@ -1,112 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Kotta+One&family=Russo+One&display=swap');
 
-:root {
-  --font-primary: 'Russo One', sans-serif;
-  --font-secondary: 'Kotta One', serif;
-}
-
-.page1 {
-  background-image: url('../assets/background3.png');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  height: 100vh;
-  color: white;
+.Display{
   display: flex;
-  flex-direction: column;
+  overflow: hidden;
+  height: 100vh;
+  background-image: url('../assets/Build.png');
+  background-size: cover;
   justify-content: center;
   align-items: center;
+}
+
+.MainBody{
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: #F9D949;
+  height: 250px;
+  font-family: 'Russo One';
+  justify-content: space-between;
+  align-items: center;
+  rotate: -7deg;
+}
+
+.MainBody h1{
+  font-size: 80px;
   font-family: "Kaushan Script", cursive;
-  font-style: normal;
+}
+
+.marquee{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.marquee span{
+  text-transform: uppercase;
+  will-change: transform;
+  transform: translateX(0);
+  white-space: nowrap;
+  animation: marquee 10s linear infinite;
+  /* font-size: 200px; */
+  font-family: 'Gravitas One', Helvetica, Arial, sans-serif;
   font-weight: 900;
-  font-size: 3rem; /* Using rem for relative font size */
+  color: #F9D949;
 }
 
-.page1 img {
-  z-index: 0;
-  position: absolute;
-}
-
-.page1 h1 {
-  margin-right: 10%;
-  transform: rotate(-7deg);
-  z-index: 1;
-}
-
-.page1 h1:nth-child(2) {
-  margin-left: 17%;
-}
-
-.section2 {
-  background-image: url('../assets/Background2.png');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  height: 100vh;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-primary);
-  margin: auto;
-}
-
-.section2 h1 {
-  font-size: 3.5rem;
-  width: 80%;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.section2 p {
-  font-family: var(--font-secondary);
-  font-size: 1.5rem;
-  width: 80%; 
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.section3 {
-  background-image: url('../assets/background3.png');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  height: 100vh;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-primary);
-  margin: auto;
-}
-
-.section3 h1 {
-  font-size: 3.5rem; 
-  width: 80%;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.section3 p {
-  font-family: var(--font-secondary);
-  font-size: 1.5rem;
-  width: 80%; 
-  margin-top: 1rem;
-  text-align: center;
-}
-
-/* Media queries for responsiveness */
-@media screen and (max-width: 768px) {
-  .section2 h1 {
-    font-size: 2.5rem;
-    width: 90%;
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
   }
-
-  .section2 p {
-    font-size: 1.25rem;
-    width: 90%;
+  100% {
+    transform: translateX(-100%);
   }
 }
-
