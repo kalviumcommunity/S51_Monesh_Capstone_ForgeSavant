@@ -13,7 +13,9 @@ const Navbar = () => {
         <div className="right-Nav">
           <p id='FAQ'>FAQ</p>
           <p id='About'>About</p>
-          <button className="Build">Forge Your PC</button>
+          <Link to="/build" aria-label='Forge Your PC'>
+            <button className="Build">Forge Your PC</button>
+          </Link>
         </div>
       </div>
     </>
