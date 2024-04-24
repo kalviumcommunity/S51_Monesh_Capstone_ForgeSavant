@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Kotta+One&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Kaushan+Script&display=swap');
 
 .Display{
   display: flex;
@@ -16,10 +16,10 @@
   background-color: black;
   color: #F9D949;
   height: 250px;
-  font-family: 'Russo One';
   justify-content: space-between;
   align-items: center;
-  rotate: -7deg;
+  rotate: -6deg;
+  margin-top: 40px;
 }
 
 .MainBody h1{
@@ -32,16 +32,23 @@
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
+  letter-spacing: 2px;
+  font-size: 20px;
 }
 
 .marquee span{
-  text-transform: uppercase;
+  text-decoration: none;
+  border-top: 2px solid #F9D949;
+  border-bottom: 2px solid #F9D949;
+}
+
+.marquee span{
   will-change: transform;
   transform: translateX(0);
   white-space: nowrap;
-  animation: marquee 10s linear infinite;
-  /* font-size: 200px; */
-  font-family: 'Gravitas One', Helvetica, Arial, sans-serif;
+  animation: marquee 6s linear infinite;
+  /* font-family: "Jersey 10", sans-serif; */
+  font-family: "Jersey 15", sans-serif;
   font-weight: 900;
   color: #F9D949;
 }
@@ -53,4 +60,9 @@
   100% {
     transform: translateX(-100%);
   }
+}
+
+.secondPage{
+  height: 100vh;
+  background-color: black;
 }
