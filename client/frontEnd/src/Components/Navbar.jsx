@@ -1,14 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Styles/Navbar.css';
-import brandLogo from '../assets/ForgeSavant2.png';
+import Forge from '../assets/ForgeSavant2.png';
 
 const Navbar = () => {
   return (
     <>
-      <div className='navbar'>
-        <img src={brandLogo} alt="Forge Savant Logo" />
-        <Link to="/build"><button id='build'>Forge your PC</button></Link>
+      <div className="Navbar">
+        <div className="left-Nav">
+          <img src={Forge} alt="Forge" id='brandLogo'/>
+        </div>
+        <div className="right-Nav">
+          <p id='FAQ'>FAQ</p>
+          <p id='About'>About</p>
+          <button className="Build">Forge Your PC</button>
+        </div>
       </div>
     </>
   );
