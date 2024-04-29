@@ -11,8 +11,8 @@ const Navbar = () => {
           <img src={Forge} alt="Forge" id='brandLogo'/>
         </div>
         <div className="right-Nav">
-          <p id='FAQ'>FAQ</p>
-          <p id='About'>About</p>
+          <button id='btn'>FAQ</button>
+          <button id='btn'>About</button>
           <Link to="/build" aria-label='Forge Your PC'>
             <button className="Build">Forge Your PC</button>
           </Link>

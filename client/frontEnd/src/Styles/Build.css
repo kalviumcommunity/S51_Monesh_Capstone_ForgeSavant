@@ -1,0 +1,7 @@
+.Build_Page{
+    height: 100vh;
+    background-image: url('../assets/BuildBackground.png');
+    background-size: cover;
+    background-position: center;
+    
+}

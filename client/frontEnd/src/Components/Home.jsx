@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { Link } from "react-router-dom";
 import "../Styles/home.css";
 
 const Home = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const slideIn = useSpring({
     from: { transform: "translateX(-10%)", opacity: 0 },
@@ -20,19 +29,21 @@ const Home = () => {
   return (
     <>
       <div className="Display">
-        <div className="MainBody">
-          <animated.div style={appearIn} className="marquee">
+        <div className="MainBody" style={{ transform: `translateY(-${scrollY * 0.1}px)` }}>
+          <animated.div style={appearIn} className="marquee marquee1">
             <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
             <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
           </animated.div>
-          <animated.div style={slideIn} className="BrandName"><h1>Forge Savant</h1></animated.div>
-          <animated.div style={appearIn} className="marquee">
+          <animated.div style={slideIn} className="BrandName"><h1 style={{ transform: `translateY(-${scrollY * 0.19}px)` }}>Forge Savant</h1></animated.div>
+          <animated.div style={appearIn} className="marquee marquee2">
             <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
             <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
           </animated.div>
         </div>
       </div>
-      <div className="secondPage"></div>
+      <div className="secondPage">
+        
+      </div>
     </>
   );
 };
