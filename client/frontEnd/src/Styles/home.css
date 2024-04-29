@@ -42,11 +42,22 @@
   border-bottom: 2px solid #F9D949;
 }
 
-.marquee span{
+.marquee1 span{
   will-change: transform;
   transform: translateX(0);
   white-space: nowrap;
   animation: marquee 6s linear infinite;
+  /* font-family: "Jersey 10", sans-serif; */
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 900;
+  color: #F9D949;
+}
+
+.marquee2 span{
+  will-change: transform;
+  transform: translateX(100%);
+  white-space: nowrap;
+  animation: marquee2 6s linear infinite;
   /* font-family: "Jersey 10", sans-serif; */
   font-family: "Jersey 15", sans-serif;
   font-weight: 900;
@@ -59,6 +70,15 @@
   }
   100% {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
 

@@ -1,14 +1,16 @@
 .Navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
   display: flex;
+  height: 10vh;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.221);
+  backdrop-filter: blur(20px);
   color: #fff;
   font-family: 'Russo One';
 }
@@ -27,9 +29,59 @@
   align-items: center;
 }
 
-.right-Nav p {
-  margin-right: 60px;
+.right-Nav button{
+  margin-right: 35px;
+}
+
+#btn {
+  font-size: 17px;
+  background: transparent;
+  border: none;
+  padding: 0.4em 1.2em;
+  color: #F9D949;
+  font-family: 'Russo one';
+  text-transform: uppercase;
+  position: relative;
+  transition: 0.5s ease;
   cursor: pointer;
+}
+
+#btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #F9D949;
+  transition: 0.5s ease;
+}
+
+#btn:hover {
+  color: #1e1e2b;
+  transition-delay: 0.5s;
+}
+
+#btn:hover::before {
+  width: 100%;
+}
+
+#btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  background-color: #F9D949;
+  transition: 0.4s ease;
+  z-index: -1;
+}
+
+#btn:hover::after {
+  height: 100%;
+  transition-delay: 0.4s;
+  color: aliceblue;
 }
 
 .Build {
@@ -41,4 +93,9 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: 1s ease;
+}
+
+.Build:hover{
+  transform: scale(1.1);
 }
