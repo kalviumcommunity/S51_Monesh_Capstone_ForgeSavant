@@ -34,7 +34,7 @@ const Home = () => {
             <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
             <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
           </animated.div>
-          <animated.div style={slideIn} className="BrandName"><h1 style={{ transform: `translateY(-${scrollY * 0.19}px)` }}>Forge Savant</h1></animated.div>
+          <animated.div style={slideIn} className="BrandName"><h1>Forge Savant</h1></animated.div>
           <animated.div style={appearIn} className="marquee marquee2">
             <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
             <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
@@ -42,7 +42,17 @@ const Home = () => {
         </div>
       </div>
       <div className="secondPage">
-        
+        <div className="secondBody">
+      <animated.div style={appearIn} className="marquee marquee1">
+            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
+          </animated.div>
+          <animated.div style={slideIn}><h1>On Progress</h1></animated.div>
+          <animated.div style={appearIn} className="marquee marquee2">
+            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
+          </animated.div>
+          </div>
       </div>
     </>
   );

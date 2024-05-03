@@ -83,6 +83,28 @@
 }
 
 .secondPage{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   height: 100vh;
   background-color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+.secondBody h1{
+  font-size: 80px;
+  font-family: "Kaushan Script", cursive;
+}
+
+.secondBody{
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: #F9D949;
+  height: 250px;
+  justify-content: space-between;
+  align-items: center;
+  rotate: -6deg;
+  margin-top: 40px;
 }
