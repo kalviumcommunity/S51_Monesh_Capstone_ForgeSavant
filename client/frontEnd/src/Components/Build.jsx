@@ -15,27 +15,31 @@ const Build = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const gpuResponse = await axios.get('http://localhost:5000/GPU');
+                const [
+                    gpuResponse,
+                    cpuResponse,
+                    cabinetResponse,
+                    storageResponse,
+                    smpsResponse,
+                    motherboardResponse,
+                    ramResponse
+                ] = await Promise.all([
+                    axios.get('http://localhost:5000/GPU'),
+                    axios.get('http://localhost:5000/CPU'),
+                    axios.get('http://localhost:5000/cabinet'),
+                    axios.get('http://localhost:5000/storage'),
+                    axios.get('http://localhost:5000/smps'),
+                    axios.get('http://localhost:5000/motherboard'),
+                    axios.get('http://localhost:5000/ram')
+                ]);
+
                 setGpuData(gpuResponse.data);
-
-                const cpuResponse = await axios.get('http://localhost:5000/CPU');
                 setCpuData(cpuResponse.data);
-
-                const cabinetResponse = await axios.get('http://localhost:5000/cabinet');
                 setCabinetData(cabinetResponse.data);
-
-                const storageResponse = await axios.get('http://localhost:5000/storage');
                 setStorageData(storageResponse.data);
-
-                const smpsResponse = await axios.get('http://localhost:5000/smps');
                 setSmpsData(smpsResponse.data);
-
-                const motherboardResponse = await axios.get('http://localhost:5000/motherboard');
                 setMotherboardData(motherboardResponse.data);
-
-                const ramResponse = await axios.get('http://localhost:5000/ram');
                 setRamData(ramResponse.data);
-                console.log(cabinetData)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
