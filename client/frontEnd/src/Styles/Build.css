@@ -50,3 +50,14 @@
 .pc-img img{
     height: 90%;
 }
+
+
+.modal{
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    background-color: white;
+    padding: 80px 40px;
+    border: 1px black solid;
+    border-radius: 20px;    
+}
