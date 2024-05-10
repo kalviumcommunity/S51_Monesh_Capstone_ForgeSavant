@@ -1,52 +1,91 @@
-.Build_Page{
-    height: 100vh;
-    background-image: url('../assets/BuildBackground.png');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.Build_Page {
+  height: 100vh;
+  background-image: url("../assets/BuildBackground.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#gold{
-    color: #F9D949;
+#gold {
+  color: #f9d949;
 }
 
-.Build-Title{
-    font-family: 'Russo one';
-    color: white;
-    align-self: flex-start;
-    margin-left: 15%;
+.Build-Title {
+  font-family: "Russo one";
+  color: white;
+  align-self: flex-start;
+  margin-left: 15%;
 }
 
-.Build-Area{
-    height: 60vh;
-    margin-top: 20px;
-    width: 70vw;
-    background-color: white;
-    display: flex;
-    align-items: center;
+.Build-Area {
+  height: 60vh;
+  margin-top: 20px;
+  width: 70vw;
+  background-color: white;
+  display: flex;
+  align-items: center;
 }
 
-.selection{
-    background-color: #F9D949;
-    height: 60vh;
-    width: 48%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Russo one';
+.selection {
+  background-color: #f9d949;
+  font-size: 20px;
+  height: 60vh;
+  width: 48%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Russo one";
 }
 
-.pc-img{
-    height: 60vh;
-    width: 52%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.selection p {
+  cursor: pointer;
+  padding: 30px;
 }
 
-.pc-img img{
-    height: 90%;
+.pc-img {
+  height: 60vh;
+  width: 52%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pc-img img {
+  height: 90%;
+}
+
+.modal {
+  position: absolute;
+  top: 40%;
+  left: 22%;
+  background-color: white;
+  padding: 80px 40px;
+  border: 1px black solid;
+  border-radius: 20px;
+}
+
+.specs-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  background-color: black;
+  font-family: "Russo one";
+}
+
+.specs {
+  background-color: #f9d949;
+  padding: 50px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr 4fr; /* Two columns */
+  gap: 30px; /* Gap between grid items */
+}
+
+.specs p {
+  padding: 10px;
 }
