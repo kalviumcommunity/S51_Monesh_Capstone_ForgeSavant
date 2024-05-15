@@ -13,13 +13,27 @@ const Build = () => {
   const [ramData, setRamData] = useState([]);
 
   const [platform, setPlatform] = useState("");
-  const [selectedProcessor, setSelectedProcessor] = useState("");
-  const [selectedMotherboard, setSelectedMotherboard] = useState("");
-  const [selectedGPU, setSelectedGPU] = useState("");
-  const [selectedStorage, setSelectedStorage] = useState("");
-  const [selectedRAM, setSelectedRAM] = useState("");
-  const [selectedSMPS, setSelectedSMPS] = useState("");
-  const [selectedCabinet, setSelectedCabinet] = useState("");
+  const [selectedProcessor, setSelectedProcessor] = useState({
+    name : "",
+  });
+  const [selectedMotherboard, setSelectedMotherboard] = useState({
+    name : ""
+  });
+  const [selectedGPU, setSelectedGPU] = useState({
+    name : ""
+  });
+  const [selectedStorage, setSelectedStorage] = useState({
+    name : ""
+  });
+  const [selectedRAM, setSelectedRAM] = useState({
+    name : ""
+  });
+  const [selectedSMPS, setSelectedSMPS] = useState({
+    name : ""
+  });
+  const [selectedCabinet, setSelectedCabinet] = useState({
+    name : ""
+  });
 
   const [showProcessorModal, setShowProcessorModal] = useState(false);
   const [showMotherboardModal, setShowMotherboardModal] = useState(false);
@@ -67,46 +81,54 @@ const Build = () => {
 
   const handlePlatformSelect = (selectedPlatform) => {
     setPlatform(selectedPlatform);
+    setShowProcessorModal(true);
   };
 
-  const handleProcessorSelect = (selectedProcessor) => {
-    setSelectedProcessor(selectedProcessor);
+  const handleProcessorSelect = (SelectedProcessor) => {
+    setSelectedProcessor(cpuData.find(obj => obj._id === SelectedProcessor ));
+    console.log(cpuData.find(obj => obj._id === SelectedProcessor))
     setShowProcessorModal(false);
     setShowMotherboardModal(true);
   };
 
-  const handleMotherboardSelect = (selectedMotherboard) => {
-    setSelectedMotherboard(selectedMotherboard);
+  const handleMotherboardSelect = (SelectedMotherboard) => {
+    setSelectedMotherboard(motherboardData.find(obj => obj._id === SelectedMotherboard));
+    console.log(motherboardData.find(obj => obj._id === SelectedMotherboard))
     setShowMotherboardModal(false);
     setShowGPUModal(true);
   };
 
-  const handleGPUSelect = (selectedGPU) => {
-    setSelectedGPU(selectedGPU);
+  const handleGPUSelect = (SelectedGPU) => {
+    setSelectedGPU(gpuData.find(obj => obj._id === SelectedGPU));
+    console.log(gpuData.find(obj => obj._id === SelectedGPU))
     setShowGPUModal(false);
     setShowStorageModal(true);
   };
 
-  const handleStorageSelect = (selectedStorage) => {
-    setSelectedStorage(selectedStorage);
+  const handleStorageSelect = (SelectedStorage) => {
+    setSelectedStorage(storageData.find(obj => obj._id === SelectedStorage));
+    console.log(storageData.find(obj => obj._id === SelectedStorage))
     setShowStorageModal(false);
     setShowRAMModal(true);
   };
 
-  const handleRAMSelect = (selectedRAM) => {
-    setSelectedRAM(selectedRAM);
+  const handleRAMSelect = (SelectedRAM) => {
+    setSelectedRAM(ramData.find(obj => obj._id === SelectedRAM));
+    console.log(ramData.find(obj => obj._id === SelectedRAM))
     setShowRAMModal(false);
     setShowSMPSModal(true);
   };
 
-  const handleSMPSSelect = (selectedSMPS) => {
-    setSelectedSMPS(selectedSMPS);
+  const handleSMPSSelect = (SelectedSMPS) => {
+    setSelectedSMPS(smpsData.find(obj => obj._id === SelectedSMPS));
+    console.log(smpsData.find(obj => obj._id === SelectedSMPS))
     setShowSMPSModal(false);
     setShowCabinetModal(true);
   };
 
-  const handleCabinetSelect = (selectedCabinet) => {
-    setSelectedCabinet(selectedCabinet);
+  const handleCabinetSelect = (SelectedCabinet) => {
+    setSelectedCabinet(cabinetData.find(obj => obj._id === SelectedCabinet));
+    console.log(cabinetData.find(obj => obj._id === SelectedCabinet))
     setShowCabinetModal(false);
     // You can perform any final actions here, like displaying a summary or submitting the build configuration
   };
@@ -131,17 +153,7 @@ const Build = () => {
               </p>
             </div>
           ) : (
-            <div className="selection">
-              {!selectedProcessor && (
-                <p
-                  className="selection"
-                  onClick={() => setShowProcessorModal(true)}
-                >
-                  Select Processor
-                </p>
-              )}
-              {selectedProcessor && <p>Done!</p>}
-            </div>
+            <div className="selection">{selectedProcessor && <p>Done!</p>}</div>
           )}
           <div className="pc-img">
             <img src={pc} alt="" />
@@ -152,22 +164,19 @@ const Build = () => {
         {showProcessorModal && (
           <div className="modal">
             <div className="modal-content processor-modal">
-              <span
-                className="close"
-                onClick={() => setShowProcessorModal(false)}
-              >
-                &times;
-              </span>
               <h2>Choose Processor</h2>
-              <select onChange={(e) => handleProcessorSelect(e.target.value)}>
+
+              <select onChange={(e) => handleProcessorSelect(e.target.value)} value="default">
+                <option disabled label="Available Processor" value="default"/>
+
                 {cpuData
                   .filter(
                     (processor) =>
                       processor.manufacturer.toLowerCase() ===
                       platform.toLowerCase()
                   )
-                  .map((processor) => (
-                    <option key={processor._id.$oid} value={processor.name}>
+                  .map((processor,index) => (
+                    <option key={index} value={processor._id} >
                       {processor.name}
                     </option>
                   ))}
@@ -179,16 +188,11 @@ const Build = () => {
         {showMotherboardModal && (
           <div className="modal">
             <div className="modal-content processor-modal">
-              <span
-                className="close"
-                onClick={() => setShowMotherboardModal(false)}
-              >
-                &times;
-              </span>
               <h2>Choose Motherboard</h2>
-              <select onChange={(e) => handleMotherboardSelect(e.target.value)}>
-                {motherboardData.map((motherboard) => (
-                  <option key={motherboard._id.$oid} value={motherboard.name}>
+              <select onChange={(e) => handleMotherboardSelect(e.target.value)} value="default">
+                <option label="Available Motherboards" value="default"/>
+                {motherboardData.map((motherboard, index) => (
+                  <option key={index} value={motherboard._id}>
                     {motherboard.name}
                   </option>
                 ))}
@@ -200,13 +204,15 @@ const Build = () => {
         {showGPUModal && (
           <div className="modal">
             <div className="modal-content processor-modal">
-              <span className="close" onClick={() => setShowGPUModal(false)}>
-                &times;
-              </span>
               <h2>Choose GPU</h2>
-              <select onChange={(e) => handleGPUSelect(e.target.value)}>
-                {gpuData.map((gpu) => (
-                  <option key={gpu._id.$oid} value={gpu.name}>
+              <select
+                onChange={(e) => handleGPUSelect(e.target.value)}
+                defaultValue="Choose GPU"
+                value="default"
+              >
+                <option disabled label="Available GPU" value="default"/>
+                {gpuData.map((gpu, index) => (
+                  <option key={index} value={gpu._id}>
                     {gpu.name}
                   </option>
                 ))}
@@ -218,16 +224,11 @@ const Build = () => {
         {showStorageModal && (
           <div className="modal">
             <div className="modal-content processor-modal">
-              <span
-                className="close"
-                onClick={() => setShowStorageModal(false)}
-              >
-                &times;
-              </span>
               <h2>Choose Storage</h2>
-              <select onChange={(e) => handleStorageSelect(e.target.value)}>
-                {storageData.map((storage) => (
-                  <option key={storage._id.$oid} value={storage.name}>
+              <select onChange={(e) => handleStorageSelect(e.target.value)} value="default">
+                <option disabled label="Available Storage" value="default"/>
+                {storageData.map((storage, index) => (
+                  <option key={index} value={storage._id}>
                     {storage.name}
                   </option>
                 ))}
@@ -239,13 +240,11 @@ const Build = () => {
         {showRAMModal && (
           <div className="modal">
             <div className="modal-content processor-modal">
-              <span className="close" onClick={() => setShowRAMModal(false)}>
-                &times;
-              </span>
               <h2>Choose RAM</h2>
-              <select onChange={(e) => handleRAMSelect(e.target.value)}>
-                {ramData.map((ram) => (
-                  <option key={ram._id.$oid} value={ram.name}>
+              <select onChange={(e) => handleRAMSelect(e.target.value)} value="default">
+                <option disabled label="Available RAM" value="default"/>
+                {ramData.map((ram, index) => (
+                  <option key={index} value={ram._id}>
                     {ram.name}
                   </option>
                 ))}
@@ -257,13 +256,11 @@ const Build = () => {
         {showSMPSModal && (
           <div className="modal">
             <div className="modal-content processor-modal">
-              <span className="close" onClick={() => setShowSMPSModal(false)}>
-                &times;
-              </span>
               <h2>Choose SMPS</h2>
-              <select onChange={(e) => handleSMPSSelect(e.target.value)}>
-                {smpsData.map((smps) => (
-                  <option key={smps._id.$oid} value={smps.name}>
+              <select onChange={(e) => handleSMPSSelect(e.target.value)} value="default">
+                <option disabled label="Available SMPS" value="default"/>
+                {smpsData.map((smps, index) => (
+                  <option key={index} value={smps._id}>
                     {smps.name}
                   </option>
                 ))}
@@ -275,16 +272,11 @@ const Build = () => {
         {showCabinetModal && (
           <div className="modal">
             <div className="modal-content processor-modal">
-              <span
-                className="close"
-                onClick={() => setShowCabinetModal(false)}
-              >
-                &times;
-              </span>
               <h2>Choose Cabinet</h2>
-              <select onChange={(e) => handleCabinetSelect(e.target.value)}>
-                {cabinetData.map((cabinet) => (
-                  <option key={cabinet._id.$oid} value={cabinet.name}>
+              <select onChange={(e) => handleCabinetSelect(e.target.value)} value="default">
+                <option disabled label="Available Cabinet" value="default"/>
+                {cabinetData.map((cabinet, index) => (
+                  <option key={index} value={cabinet._id}>
                     {cabinet.name}
                   </option>
                 ))}
@@ -295,13 +287,13 @@ const Build = () => {
       </div>
       <div className="specs-page">
         <div className="specs">
-          <p id="cpu">CPU: {selectedProcessor}</p>
-          <p id="motherboard">Motherboard: {selectedMotherboard}</p>
-          <p id="gpu">GPU: {selectedGPU}</p>
-          <p id="storage">Storage: {selectedStorage}</p>
-          <p id="ram">RAM: {selectedRAM}</p>
-          <p id="smps">SMPS: {selectedSMPS}</p>
-          <p id="cabinet">Cabinet: {selectedCabinet}</p>
+          <p id="cpu">CPU: {selectedProcessor.name}</p>
+          <p id="motherboard">Motherboard: {selectedMotherboard.name}</p>
+          <p id="gpu">GPU: {selectedGPU.name}</p>
+          <p id="storage">Storage: {selectedStorage.name}</p>
+          <p id="ram">RAM: {selectedRAM.name}</p>
+          <p id="smps">SMPS: {selectedSMPS.name}</p>
+          <p id="cabinet">Cabinet: {selectedCabinet.name}</p>
         </div>
       </div>
     </React.Fragment>
