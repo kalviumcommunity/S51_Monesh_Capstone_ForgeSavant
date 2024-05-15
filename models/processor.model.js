@@ -39,6 +39,10 @@ const ProcessorSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+    socket: {
+      type: String,
+      required: true,
+    },
     tdp: {
       type: String,
       required: true,
