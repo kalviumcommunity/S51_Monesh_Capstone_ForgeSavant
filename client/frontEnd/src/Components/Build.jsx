@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../Styles/Build.css";
 import pc from "../assets/custom-gaming-pc.png";
+import processorImg from "../assets/Processor-Background-PNG-Image.png"
+import motherboardImg from "../assets/Motherboard-PNG.png"
+import graphicCardImg from "../assets/graphics-card-image.png"
+import storageImg from "../assets/pngwing.com.png"
+import RAMImg from "../assets/RAM-Memory-Transparent.png"
+import SmpsImg from "../assets/SMPS-image.png"
 
 const Build = () => {
   const [gpuData, setGpuData] = useState([]);
@@ -43,6 +49,36 @@ const Build = () => {
   const [showSMPSModal, setShowSMPSModal] = useState(false);
   const [showCabinetModal, setShowCabinetModal] = useState(false);
 
+  const [currentImage, setCurrentImage] = useState(pc);
+
+  const updateImage = (stage) => {
+    switch (stage) {
+      case "processor":
+        setCurrentImage(processorImg);
+        break;
+      case "motherboard":
+        setCurrentImage(motherboardImg);
+        break;
+      case "gpu":
+        setCurrentImage(graphicCardImg);
+        break;
+      case "storage":
+        setCurrentImage(storageImg);
+        break;
+      case "ram":
+        setCurrentImage(RAMImg);
+        break;
+      case "smps":
+        setCurrentImage(SmpsImg);
+        break;
+      case "cabinet":
+        setCurrentImage("path/to/cabinet/image.png");
+        break;
+      default:
+        setCurrentImage(pc);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -80,12 +116,14 @@ const Build = () => {
   }, []);
 
   const handlePlatformSelect = (selectedPlatform) => {
+    updateImage("processor");
     setPlatform(selectedPlatform);
     setShowProcessorModal(true);
   };
 
   const handleProcessorSelect = (SelectedProcessor) => {
     setSelectedProcessor(cpuData.find((obj) => obj._id === SelectedProcessor));
+    updateImage("motherboard");
     console.log(cpuData.find((obj) => obj._id === SelectedProcessor));
     setShowProcessorModal(false);
     setShowMotherboardModal(true);
@@ -95,6 +133,7 @@ const Build = () => {
     setSelectedMotherboard(
       motherboardData.find((obj) => obj._id === SelectedMotherboard)
     );
+    updateImage("gpu");
     console.log(motherboardData.find((obj) => obj._id === SelectedMotherboard));
     setShowMotherboardModal(false);
     setShowGPUModal(true);
@@ -103,12 +142,14 @@ const Build = () => {
   const handleGPUSelect = (SelectedGPU) => {
     setSelectedGPU(gpuData.find((obj) => obj._id === SelectedGPU));
     console.log(gpuData.find((obj) => obj._id === SelectedGPU));
+    updateImage("storage");
     setShowGPUModal(false);
     setShowStorageModal(true);
   };
 
   const handleStorageSelect = (SelectedStorage) => {
     setSelectedStorage(storageData.find((obj) => obj._id === SelectedStorage));
+    updateImage("ram");
     console.log(storageData.find((obj) => obj._id === SelectedStorage));
     setShowStorageModal(false);
     setShowRAMModal(true);
@@ -116,6 +157,7 @@ const Build = () => {
 
   const handleRAMSelect = (SelectedRAM) => {
     setSelectedRAM(ramData.find((obj) => obj._id === SelectedRAM));
+    updateImage("smps");
     console.log(ramData.find((obj) => obj._id === SelectedRAM));
     setShowRAMModal(false);
     setShowSMPSModal(true);
@@ -123,6 +165,7 @@ const Build = () => {
 
   const handleSMPSSelect = (SelectedSMPS) => {
     setSelectedSMPS(smpsData.find((obj) => obj._id === SelectedSMPS));
+    updateImage("cabinet");
     console.log(smpsData.find((obj) => obj._id === SelectedSMPS));
     setShowSMPSModal(false);
     setShowCabinetModal(true);
@@ -147,18 +190,24 @@ const Build = () => {
         <div className="Build-Area">
           {platform === "" ? (
             <div className="selection">
-              <p className="sel" onClick={() => handlePlatformSelect("AMD")}>
-                Choose AMD
-              </p>
-              <p className="sel" onClick={() => handlePlatformSelect("Intel")}>
-                Choose INTEL
-              </p>
+              <h2>Choose Platform</h2>
+              <div>
+                <p className="sel" onClick={() => handlePlatformSelect("AMD")}>
+                  AMD
+                </p>
+                <p
+                  className="sel"
+                  onClick={() => handlePlatformSelect("Intel")}
+                >
+                  INTEL
+                </p>
+              </div>
             </div>
           ) : (
             <div className="selection">{selectedProcessor && <p>Done!</p>}</div>
           )}
           <div className="pc-img">
-            <img src={pc} alt="" />
+            <img src={currentImage} alt="PC" />
           </div>
         </div>
 
@@ -199,11 +248,17 @@ const Build = () => {
                 value="default"
               >
                 <option label="Available Motherboards" value="default" />
-                {motherboardData.filter((motherboard) => motherboard.specifications.socket === selectedProcessor.specifications.socket).map((motherboard, index) => (
-                  <option key={index} value={motherboard._id}>
-                    {motherboard.name}
-                  </option>
-                ))}
+                {motherboardData
+                  .filter(
+                    (motherboard) =>
+                      motherboard.specifications.socket ===
+                      selectedProcessor.specifications.socket
+                  )
+                  .map((motherboard, index) => (
+                    <option key={index} value={motherboard._id}>
+                      {motherboard.name}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>
@@ -257,11 +312,17 @@ const Build = () => {
                 value="default"
               >
                 <option disabled label="Available RAM" value="default" />
-                {ramData.filter((ram) => ram.specifications.type === selectedMotherboard.specifications.ram_type).map((ram, index) => (
-                  <option key={index} value={ram._id}>
-                    {ram.name}
-                  </option>
-                ))}
+                {ramData
+                  .filter(
+                    (ram) =>
+                      ram.specifications.type ===
+                      selectedMotherboard.specifications.ram_type
+                  )
+                  .map((ram, index) => (
+                    <option key={index} value={ram._id}>
+                      {ram.name}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>
@@ -295,11 +356,17 @@ const Build = () => {
                 value="default"
               >
                 <option disabled label="Available Cabinet" value="default" />
-                {cabinetData.filter((cabinet) => (cabinet.specifications.motherboard_support).includes(selectedMotherboard.specifications.form_factor)).map((cabinet, index) => (
-                  <option key={index} value={cabinet._id}>
-                    {cabinet.name}
-                  </option>
-                ))}
+                {cabinetData
+                  .filter((cabinet) =>
+                    cabinet.specifications.motherboard_support.includes(
+                      selectedMotherboard.specifications.form_factor
+                    )
+                  )
+                  .map((cabinet, index) => (
+                    <option key={index} value={cabinet._id}>
+                      {cabinet.name}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>
