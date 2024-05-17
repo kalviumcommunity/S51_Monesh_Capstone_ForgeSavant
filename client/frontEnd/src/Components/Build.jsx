@@ -92,12 +92,13 @@ const Build = () => {
     setShowProcessorModal(true);
   };
 
-  const handleComponentSelect = (data, setSelected, stage, nextModalSetter) => (event) => {
-    const selected = data.find((obj) => obj._id === event.target.value);
-    setSelected(selected);
-    updateImage(stage);
-    nextModalSetter(true);
-  };
+  const handleComponentSelect =
+    (data, setSelected, stage, nextModalSetter) => (event) => {
+      const selected = data.find((obj) => obj._id === event.target.value);
+      setSelected(selected);
+      updateImage(stage);
+      nextModalSetter(true);
+    };
 
   const filterData = (data, criteria) => {
     return data.filter(criteria);
@@ -120,7 +121,10 @@ const Build = () => {
                 <p className="sel" onClick={() => handlePlatformSelect("AMD")}>
                   AMD
                 </p>
-                <p className="sel" onClick={() => handlePlatformSelect("Intel")}>
+                <p
+                  className="sel"
+                  onClick={() => handlePlatformSelect("Intel")}
+                >
                   INTEL
                 </p>
               </div>
@@ -138,14 +142,29 @@ const Build = () => {
           <div className="modal">
             <div className="modal-content processor-modal">
               <h2>Choose Processor</h2>
-              <select onChange={handleComponentSelect(cpuData, setSelectedProcessor, "motherboard", setShowMotherboardModal)} value="default">
+              <div className="selection-container">
+              <select
+                onChange={handleComponentSelect(
+                  cpuData,
+                  setSelectedProcessor,
+                  "motherboard",
+                  setShowMotherboardModal
+                )}
+                value="default"
+              >
                 <option disabled label="Available Processor" value="default" />
-                {filterData(cpuData, (processor) => processor.manufacturer.toLowerCase() === platform.toLowerCase()).map((processor, index) => (
+                {filterData(
+                  cpuData,
+                  (processor) =>
+                    processor.manufacturer.toLowerCase() ===
+                    platform.toLowerCase()
+                ).map((processor, index) => (
                   <option key={index} value={processor._id}>
                     {processor.name}
                   </option>
                 ))}
               </select>
+              </div>
             </div>
           </div>
         )}
@@ -154,9 +173,22 @@ const Build = () => {
           <div className="modal">
             <div className="modal-content processor-modal">
               <h2>Choose Motherboard</h2>
-              <select onChange={handleComponentSelect(motherboardData, setSelectedMotherboard, "gpu", setShowGPUModal)} value="default">
+              <select
+                onChange={handleComponentSelect(
+                  motherboardData,
+                  setSelectedMotherboard,
+                  "gpu",
+                  setShowGPUModal
+                )}
+                value="default"
+              >
                 <option label="Available Motherboards" value="default" />
-                {filterData(motherboardData, (motherboard) => motherboard.specifications.socket === selectedProcessor.specifications.socket).map((motherboard, index) => (
+                {filterData(
+                  motherboardData,
+                  (motherboard) =>
+                    motherboard.specifications.socket ===
+                    selectedProcessor.specifications.socket
+                ).map((motherboard, index) => (
                   <option key={index} value={motherboard._id}>
                     {motherboard.name}
                   </option>
@@ -170,7 +202,16 @@ const Build = () => {
           <div className="modal">
             <div className="modal-content processor-modal">
               <h2>Choose GPU</h2>
-              <select onChange={handleComponentSelect(gpuData, setSelectedGPU, "storage", setShowStorageModal)} defaultValue="Choose GPU" value="default">
+              <select
+                onChange={handleComponentSelect(
+                  gpuData,
+                  setSelectedGPU,
+                  "storage",
+                  setShowStorageModal
+                )}
+                defaultValue="Choose GPU"
+                value="default"
+              >
                 <option disabled label="Available GPU" value="default" />
                 {gpuData.map((gpu, index) => (
                   <option key={index} value={gpu._id}>
@@ -186,7 +227,15 @@ const Build = () => {
           <div className="modal">
             <div className="modal-content processor-modal">
               <h2>Choose Storage</h2>
-              <select onChange={handleComponentSelect(storageData, setSelectedStorage, "ram", setShowRAMModal)} value="default">
+              <select
+                onChange={handleComponentSelect(
+                  storageData,
+                  setSelectedStorage,
+                  "ram",
+                  setShowRAMModal
+                )}
+                value="default"
+              >
                 <option disabled label="Available Storage" value="default" />
                 {storageData.map((storage, index) => (
                   <option key={index} value={storage._id}>
@@ -202,9 +251,22 @@ const Build = () => {
           <div className="modal">
             <div className="modal-content processor-modal">
               <h2>Choose RAM</h2>
-              <select onChange={handleComponentSelect(ramData, setSelectedRAM, "smps", setShowSMPSModal)} value="default">
+              <select
+                onChange={handleComponentSelect(
+                  ramData,
+                  setSelectedRAM,
+                  "smps",
+                  setShowSMPSModal
+                )}
+                value="default"
+              >
                 <option disabled label="Available RAM" value="default" />
-                {filterData(ramData, (ram) => ram.specifications.type === selectedMotherboard.specifications.ram_type).map((ram, index) => (
+                {filterData(
+                  ramData,
+                  (ram) =>
+                    ram.specifications.type ===
+                    selectedMotherboard.specifications.ram_type
+                ).map((ram, index) => (
                   <option key={index} value={ram._id}>
                     {ram.name}
                   </option>
@@ -218,7 +280,15 @@ const Build = () => {
           <div className="modal">
             <div className="modal-content processor-modal">
               <h2>Choose SMPS</h2>
-              <select onChange={handleComponentSelect(smpsData, setSelectedSMPS, "cabinet", setShowCabinetModal)} value="default">
+              <select
+                onChange={handleComponentSelect(
+                  smpsData,
+                  setSelectedSMPS,
+                  "cabinet",
+                  setShowCabinetModal
+                )}
+                value="default"
+              >
                 <option disabled label="Available SMPS" value="default" />
                 {smpsData.map((smps, index) => (
                   <option key={index} value={smps._id}>
@@ -234,9 +304,21 @@ const Build = () => {
           <div className="modal">
             <div className="modal-content processor-modal">
               <h2>Choose Cabinet</h2>
-              <select onChange={handleComponentSelect(cabinetData, setSelectedCabinet, "", () => {})} value="default">
+              <select
+                onChange={handleComponentSelect(
+                  cabinetData,
+                  setSelectedCabinet,
+                  "",
+                  () => {}
+                )}
+                value="default"
+              >
                 <option disabled label="Available Cabinet" value="default" />
-                {filterData(cabinetData, (cabinet) => cabinet.specifications.motherboard_support.includes(selectedMotherboard.specifications.form_factor)).map((cabinet, index) => (
+                {filterData(cabinetData, (cabinet) =>
+                  cabinet.specifications.motherboard_support.includes(
+                    selectedMotherboard.specifications.form_factor
+                  )
+                ).map((cabinet, index) => (
                   <option key={index} value={cabinet._id}>
                     {cabinet.name}
                   </option>
