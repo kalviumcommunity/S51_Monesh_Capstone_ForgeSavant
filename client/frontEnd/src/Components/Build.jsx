@@ -32,6 +32,7 @@ const Build = () => {
   const [selectedMotherboard, setSelectedMotherboard] = useState({ name: "" });
   const [selectedGPU, setSelectedGPU] = useState({ name: "" });
   const [selectedStorage, setSelectedStorage] = useState({ name: "" });
+  const [selectedSecondStorage, setSelectedSecondStroge] = useState({ name: "" });
   const [selectedRAM, setSelectedRAM] = useState({ name: "" });
   const [selectedSMPS, setSelectedSMPS] = useState({ name: "" });
   const [selectedCabinet, setSelectedCabinet] = useState({ name: "" });
@@ -40,6 +41,7 @@ const Build = () => {
   const [showMotherboardModal, setShowMotherboardModal] = useState(false);
   const [showGPUModal, setShowGPUModal] = useState(false);
   const [showStorageModal, setShowStorageModal] = useState(false);
+  const [showSecondStorageModal, setShowSecondStorageModal] = useState(false);
   const [showRAMModal, setShowRAMModal] = useState(false);
   const [showSMPSModal, setShowSMPSModal] = useState(false);
   const [showCabinetModal, setShowCabinetModal] = useState(false);
@@ -143,27 +145,31 @@ const Build = () => {
             <div className="modal-content processor-modal">
               <h2>Choose Processor</h2>
               <div className="selection-container">
-              <select
-                onChange={handleComponentSelect(
-                  cpuData,
-                  setSelectedProcessor,
-                  "motherboard",
-                  setShowMotherboardModal
-                )}
-                value="default"
-              >
-                <option disabled label="Available Processor" value="default" />
-                {filterData(
-                  cpuData,
-                  (processor) =>
-                    processor.manufacturer.toLowerCase() ===
-                    platform.toLowerCase()
-                ).map((processor, index) => (
-                  <option key={index} value={processor._id}>
-                    {processor.name}
-                  </option>
-                ))}
-              </select>
+                <select
+                  onChange={handleComponentSelect(
+                    cpuData,
+                    setSelectedProcessor,
+                    "motherboard",
+                    setShowMotherboardModal
+                  )}
+                  value="default"
+                >
+                  <option
+                    disabled
+                    label="Available Processor"
+                    value="default"
+                  />
+                  {filterData(
+                    cpuData,
+                    (processor) =>
+                      processor.manufacturer.toLowerCase() ===
+                      platform.toLowerCase()
+                  ).map((processor, index) => (
+                    <option key={index} value={processor._id}>
+                      {processor.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>
@@ -231,6 +237,30 @@ const Build = () => {
                 onChange={handleComponentSelect(
                   storageData,
                   setSelectedStorage,
+                  "storage",
+                  setShowSecondStorageModal
+                )}
+                value="default"
+              >
+                <option disabled label="Available Storage" value="default" />
+                {storageData.map((storage, index) => (
+                  <option key={index} value={storage._id}>
+                    {storage.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        )}
+
+        {showSecondStorageModal && (
+          <div className="modal">
+            <div className="modal-content processor-modal">
+              <h2>Choose Secondary Storage</h2>
+              <select
+                onChange={handleComponentSelect(
+                  storageData,
+                  setSelectedSecondStroge,
                   "ram",
                   setShowRAMModal
                 )}
