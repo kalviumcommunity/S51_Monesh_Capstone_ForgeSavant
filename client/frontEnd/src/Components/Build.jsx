@@ -360,13 +360,14 @@ const Build = () => {
       </div>
       <div className="specs-page">
         <div className="specs">
-          <p id="cpu">CPU: {selectedProcessor.name}</p>
-          <p id="motherboard">Motherboard: {selectedMotherboard.name}</p>
-          <p id="gpu">GPU: {selectedGPU.name}</p>
-          <p id="storage">Storage: {selectedStorage.name}</p>
-          <p id="ram">RAM: {selectedRAM.name}</p>
-          <p id="smps">SMPS: {selectedSMPS.name}</p>
-          <p id="cabinet">Cabinet: {selectedCabinet.name}</p>
+          <div id="cpu">CPU:<br/><br/> {selectedProcessor.name}</div>
+          <div id="motherboard">Motherboard:<br/><br/> {selectedMotherboard.name}</div>
+          <div id="gpu">GPU:<br/><br/> {selectedGPU.name}</div>
+          <div id="storage">Storage:<br/><br/> {selectedStorage.name}</div>
+          <div id="storage">Secondary Storage:<br/><br/> {selectedSecondStorage.name}</div>
+          <div id="ram">RAM:<br/><br/> {selectedRAM.name}</div>
+          <div id="smps">SMPS:<br/><br/> {selectedSMPS.name}</div>
+          <div id="cabinet">Cabinet:<br/><br/> {selectedCabinet.name}</div>
         </div>
       </div>
     </React.Fragment>
