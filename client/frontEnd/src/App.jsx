@@ -18,6 +18,9 @@ const App = () => {
           <Navbar/>
           <Build/>
         </>}/>
+        <Route path="/authentication" element={<>
+          <Signup/>
+        </>}/>
         <Route path="/signup" element={<Signup/>}/>
       </Routes>
     </Router>

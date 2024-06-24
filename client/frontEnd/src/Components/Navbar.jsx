@@ -1,9 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../Styles/Navbar.css';
 import Forge from '../assets/ForgeSavant2.png';
 
 const Navbar = () => {
+
+  const location = useLocation()
+  const isBuildPage = location.pathname === '/build'
+
   return (
     <>
       <div className="Navbar">
@@ -13,9 +17,15 @@ const Navbar = () => {
         <div className="right-Nav">
           <button id='btn'>FAQ</button>
           <button id='btn'>About</button>
-          <Link to="/build" aria-label='Forge Your PC'>
-            <button className="Build">Forge Your PC</button>
-          </Link>
+          {!isBuildPage ? (
+            <Link to="/build" aria-label='Forge Your PC'>
+              <button className="Build">Forge Your PC</button>
+            </Link>
+          ) : (
+            <Link to="/authentication" aria-label='authentication'>
+              <button className="Build">Sign in</button>
+            </Link>
+          )}
         </div>
       </div>
     </>

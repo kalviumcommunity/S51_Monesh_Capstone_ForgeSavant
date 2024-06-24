@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const User = require('../models/user.model');
+const bcrypt = require('bcryptjs');
 const Processor = require("../models/processor.model");
 const GraphicsCard = require("../models/graphicsCard.model")
 const Motherboard = require("../models/motherboard.model")
@@ -13,6 +15,29 @@ router.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
+});
+
+//Sign-up Route
+router.post('/signup', async (req, res) => {
+  try {
+    const { fullname, email, password } = req.body;
+    console.log(fullname, email);
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: 'User already exists' });
+    }
+
+    // Create a new user
+    const newUser = new User({ fullname, email, password });
+    await newUser.save();
+
+    res.status(201).json({ message: 'User created successfully' });
+  } catch (err) {
+    console.error('Error during sign-up:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 // Endpoint to check compatibility
