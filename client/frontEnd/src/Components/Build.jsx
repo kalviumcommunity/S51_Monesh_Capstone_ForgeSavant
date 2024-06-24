@@ -8,6 +8,8 @@ import graphicCardImg from "../assets/graphics-card-image.png";
 import storageImg from "../assets/pngwing.com.png";
 import RAMImg from "../assets/RAM-Memory-Transparent.png";
 import SmpsImg from "../assets/SMPS-image.png";
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold,} from "@google/generative-ai";
+import APIKey from "../APIKey";
 
 const imagePaths = {
   processor: processorImg,
@@ -47,6 +49,8 @@ const Build = () => {
   const [showCabinetModal, setShowCabinetModal] = useState(false);
 
   const [currentImage, setCurrentImage] = useState(pc);
+
+  const [PSUSuggest, setPSUSuggest] = useState("")
 
   const updateImage = (stage) => {
     setCurrentImage(imagePaths[stage] || pc);
@@ -95,16 +99,63 @@ const Build = () => {
   };
 
   const handleComponentSelect =
-    (data, setSelected, stage, nextModalSetter) => (event) => {
+    (data, setSelected, stage, nextModalSetter) => async (event) => {
       const selected = data.find((obj) => obj._id === event.target.value);
       setSelected(selected);
       updateImage(stage);
       nextModalSetter(true);
+
+      if (stage === "ram"){
+        const psuSuggestion = await run(`processor: ${selectedProcessor.name}\nmotherboard: ${selectedMotherboard.name}\ngpu: ${selectedGPU.name}`);
+        setPSUSuggest(psuSuggestion.trim())
+      }
     };
 
   const filterData = (data, criteria) => {
     return data.filter(criteria);
   };
+  
+  const genAI = new GoogleGenerativeAI(APIKey);
+  
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-pro",
+    systemInstruction: "Return just the value of PSU wattage recommended no need of explanation or any extra words. example: \"650\" note the value must be max watt",
+  });
+  
+  const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 64,
+    maxOutputTokens: 8192,
+    responseMimeType: "text/plain",
+  };
+  
+  async function run(prompt) {
+    const chatSession = model.startChat({
+      generationConfig,
+   // safetySettings: Adjust safety settings
+   // See https://ai.google.dev/gemini-api/docs/safety-settings
+      history: [
+        {
+          role: "user",
+          parts: [
+            {text: "processor: Intel Core i9-12900k\nMotherboard: ASUS ROG Strix Z690-E Gaming\nGPU: Nvidia Geforce RTX 3080"},
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {text: "850W \n"},
+          ],
+        },
+      ],
+    });
+  
+    const result = await chatSession.sendMessage(prompt);
+    const response = result.response.text()
+    console.log(response);
+    return response
+  }
 
   return (
     <React.Fragment>
@@ -243,7 +294,7 @@ const Build = () => {
                 value="default"
               >
                 <option disabled label="Available Storage" value="default" />
-                {storageData.map((storage, index) => (
+                {filterData(storageData, (storage) => storage.specifications.interface === "NVMe").map((storage, index) => (
                   <option key={index} value={storage._id}>
                     {storage.name}
                   </option>
@@ -267,7 +318,7 @@ const Build = () => {
                 value="default"
               >
                 <option disabled label="Available Storage" value="default" />
-                {storageData.map((storage, index) => (
+                {filterData(storageData, (storage) => storage.specifications.interface === "SATA").map((storage, index) => (
                   <option key={index} value={storage._id}>
                     {storage.name}
                   </option>
@@ -320,7 +371,12 @@ const Build = () => {
                 value="default"
               >
                 <option disabled label="Available SMPS" value="default" />
-                {smpsData.map((smps, index) => (
+                {filterData(smpsData, (smps) => {
+                  const smpsPSU = parseInt(smps.specifications.wattage)
+                  const comparePSU = parseInt(PSUSuggest)
+                  console.log(PSUSuggest)
+                  return smpsPSU <= comparePSU && smpsPSU >= comparePSU - 100
+                }).map((smps, index) => (
                   <option key={index} value={smps._id}>
                     {smps.name}
                   </option>
