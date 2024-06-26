@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+.Login {
+    display: flex;
+    height: 100vh;
+    background-color: black;
+}
+
+.left-side-login {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: calc(52% - 160px);
+}
+
+.logo-login {
+    height: 15vh;
+}
+
+.right-side-login {
+    flex: 1;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Russo One', sans-serif;
+    padding: 20px;
+}
+
+.right-side-login h3 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-left: 0;
+}
+
+.login-text {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-left: 0;
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-login input {
+    font-family: 'Russo One', sans-serif;
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.login-button {
+    font-family: 'Russo One', sans-serif;
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.right-side-login button[type="button"] {
+    width: auto;
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.head-login {
+    margin-right: 58%;
+}
+
+.error-message-login {
+    font-family: 'Russo One', sans-serif;
+    color: red;
+    margin-top: 10px;
+}
