@@ -3,7 +3,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";  // Corrected import
 import logo from "../assets/ForgeSavant1.png";
 import "../Styles/signup.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 function Signup() {
@@ -11,12 +11,39 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateForm = () => {
+    let valid = true;
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address.");
+      valid = false;
+    } else {
+      setEmailError("");
+    }
+    if (password.length < 8) {
+      setPasswordError("Password must be at least 8 characters long.");
+      valid = false;
+    } else {
+      setPasswordError("");
+    }
+    return valid;
+  };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     setMessage(""); // Clear any existing messages
-    console.log(fullname, email, password)
+    if (!validateForm()) {
+      return;
+    }
+    console.log(fullname, email, password);
     try {
       const response = await axios.post("http://localhost:5000/signup", {
         fullname,
@@ -100,15 +127,18 @@ function Signup() {
             aria-label="Full Name"
             value={fullname}
             onChange={(e) => setFullname(e.target.value)}
+            required
           />
           <input
-            type="text"
+            type="email"
             name="email"
             placeholder="Email"
             aria-label="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
+          {emailError && <p className="error-message">{emailError}</p>}
           <input
             type="password"
             name="password"
@@ -116,7 +146,9 @@ function Signup() {
             aria-label="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
+          {passwordError && <p className="error-message">{passwordError}</p>}
           <button type="submit" className="register">
             Register
           </button>
@@ -126,16 +158,18 @@ function Signup() {
               console.log("Login Failed");
             }}
           />
-          <button
-            type="button"
-            style={{
-              cursor: "pointer",
-              backgroundColor: "transparent",
-              color: "white",
-            }}
-          >
-            Already have an account? Login here.
-          </button>
+          <Link to="/loginAuthentication">
+            <button
+              type="button"
+              style={{
+                cursor: "pointer",
+                backgroundColor: "transparent",
+                color: "white",
+              }}
+            >
+              Already have an account? Login here.
+            </button>
+          </Link>
         </form>
         {message && <p className="error-message">{message}</p>}
       </div>
