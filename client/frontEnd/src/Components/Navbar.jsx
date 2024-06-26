@@ -22,7 +22,7 @@ const Navbar = () => {
               <button className="Build">Forge Your PC</button>
             </Link>
           ) : (
-            <Link to="/authentication" aria-label='authentication'>
+            <Link to="/loginAuthentication" aria-label='authentication'>
               <button className="Build">Sign in</button>
             </Link>
           )}

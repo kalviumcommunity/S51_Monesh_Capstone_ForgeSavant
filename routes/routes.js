@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const User = require('../models/user.model');
 const bcrypt = require('bcryptjs');
+const { check, validationResult } = require('express-validator');
+const jwt = require('jsonwebtoken');
+
+
 const Processor = require("../models/processor.model");
 const GraphicsCard = require("../models/graphicsCard.model")
 const Motherboard = require("../models/motherboard.model")
@@ -16,6 +20,111 @@ router.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
+
+//Google Login
+router.post('/googleLogin', async (req, res) => {
+  const { email, fullname } = req.body;
+
+  try {
+    let user = await User.findOne({ email });
+
+    if (!user) {
+      // If user doesn't exist, create a new one
+      user = new User({ fullname, email, password: null });
+      await user.save();
+    }
+
+    // Create JWT payload
+    const payload = {
+      user: {
+        id: user.id
+      }
+    };
+
+    // Sign the JWT token
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
+  } catch (err) {
+    console.error('Error during Google login:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+// Login Route
+router.post('/login', [
+  check('email', 'Please include a valid email').isEmail(),
+  check('password', 'Password is required').exists()
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const { email, password, googleLogin } = req.body;
+
+  try {
+    // Check if user exists
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid Credentials' });
+    }
+
+    if (googleLogin) {
+      // If Google login, bypass password check
+      const payload = {
+        user: {
+          id: user.id
+        }
+      };
+
+      jwt.sign(
+        payload,
+        process.env.JWT_SECRET,
+        { expiresIn: '1h' },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
+    } else {
+      // Check if password matches
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(400).json({ error: 'Invalid Credentials' });
+      }
+
+      // Create JWT payload
+      const payload = {
+        user: {
+          id: user.id
+        }
+      };
+
+      // Sign the JWT token
+      jwt.sign(
+        payload,
+        process.env.JWT_SECRET,
+        { expiresIn: '1h' },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
+    }
+  } catch (err) {
+    console.error('Error during login:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 //Sign-up Route
 router.post('/signup', async (req, res) => {
@@ -39,6 +148,54 @@ router.post('/signup', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+//googleUser Check
+router.post('/checkGoogleUser', async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      return res.json({ exists: true });
+    } else {
+      return res.json({ exists: false });
+    }
+  } catch (err) {
+    console.error('Error checking Google user:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+//Google Signup
+router.post('/googleSignup', async (req, res) => {
+  const { fullname, email } = req.body;
+
+  try {
+    const newUser = new User({ fullname, email, password: null });
+    await newUser.save();
+
+    const payload = {
+      user: {
+        id: newUser.id
+      }
+    };
+
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' },
+      (err, token) => {
+        if (err) throw err;
+        res.status(201).json({ token });
+      }
+    );
+  } catch (err) {
+    console.error('Error during Google sign-up:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 // Endpoint to check compatibility
 router.post("/checkCompatibility", async (req, res) => {

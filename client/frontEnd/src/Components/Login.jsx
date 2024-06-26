@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";  // Corrected import
 import logo from "../assets/ForgeSavant1.png";
-import "../Styles/signup.css";
-import { useNavigate } from "react-router-dom";
+import "../Styles/login.css";  // Updated CSS file
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Signup() {
-  const [fullname, setFullname] = useState("");
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -16,32 +15,31 @@ function Signup() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     setMessage(""); // Clear any existing messages
-    console.log(fullname, email, password)
+    console.log(email, password);
     try {
-      const response = await axios.post("http://localhost:5000/signup", {
-        fullname,
+      const response = await axios.post("http://localhost:5000/login", {
         email,
         password
       });
 
-      if (response.status === 201) {
-        console.log("Sign-up successful:", response.data);
-        navigate('/build'); // Navigate to /build page after successful sign-up
+      if (response.status === 200) {
+        console.log("Login successful:", response.data);
+        navigate('/build'); // Navigate to /dashboard page after successful login
       } else {
         console.log("Error data: ", response.data); // Debugging log
-        if (response.data.message === "User already exists") {
-          setMessage("User already exists. Please login.");
+        if (response.data.message === "Invalid credentials") {
+          setMessage("Invalid credentials. Please try again.");
         } else {
-          setMessage("Sign-up failed. Please try again.");
+          setMessage("Login failed. Please try again.");
         }
       }
     } catch (error) {
-      console.error("Error during sign-up:", error);
+      console.error("Error during login:", error);
       setMessage("An error occurred. Please try again.");
     }
   };
 
-  const handleGoogleSignUp = async (credentialResponse) => {
+  const handleGoogleLogin = async (credentialResponse) => {
     try {
       const decoded = jwtDecode(credentialResponse.credential);
       console.log(decoded);
@@ -55,7 +53,7 @@ function Signup() {
         // User exists, log them in
         const loginResponse = await axios.post("http://localhost:5000/googleLogin", {
           email: decoded.email,
-          googleLogin: true,
+          fullname: decoded.name
         });
 
         if (loginResponse.status === 200) {
@@ -63,7 +61,7 @@ function Signup() {
           navigate('/build'); // Navigate to /build page after successful login
         }
       } else {
-        // User does not exist, create a new account
+        // User does not exist, create a new account and log in
         const signupResponse = await axios.post("http://localhost:5000/googleSignup", {
           fullname: decoded.name,
           email: decoded.email,
@@ -75,32 +73,24 @@ function Signup() {
         }
       }
     } catch (error) {
-      console.error("Error during Google sign-up/login:", error);
+      console.error("Error during Google login:", error);
       setMessage("An error occurred. Please try again.");
     }
   };
 
   return (
-    <div className="Signup">
-      <div className="left-side">
-        <img src={logo} alt="logo" className="logo" />
+    <div className="Login">
+      <div className="left-side-login">
+        <img src={logo} alt="logo" className="logo-login" />
       </div>
-      <div className="right-side">
-        <div className="head">
-          <h3>"Hello!"</h3>
-          <p className="signup-text">
-            "Sign up to get started"
+      <div className="right-side-login">
+        <div className="head-login">
+          <h3>"Welcome Back!"</h3>
+          <p className="login-text">
+            "Login to continue"
           </p>
         </div>
-        <form onSubmit={handleFormSubmit} className="form">
-          <input
-            type="text"
-            name="fullname"
-            placeholder="Full Name"
-            aria-label="Full Name"
-            value={fullname}
-            onChange={(e) => setFullname(e.target.value)}
-          />
+        <form onSubmit={handleFormSubmit} className="form-login">
           <input
             type="text"
             name="email"
@@ -117,15 +107,16 @@ function Signup() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit" className="register">
-            Register
+          <button type="submit" className="login-button">
+            Login
           </button>
           <GoogleLogin
-            onSuccess={handleGoogleSignUp}
+            onSuccess={handleGoogleLogin}
             onError={() => {
               console.log("Login Failed");
             }}
           />
+          <Link to="/signup">
           <button
             type="button"
             style={{
@@ -134,13 +125,14 @@ function Signup() {
               color: "white",
             }}
           >
-            Already have an account? Login here.
+            Don't have an account? Sign up here.
           </button>
+          </Link>
         </form>
-        {message && <p className="error-message">{message}</p>}
+        {message && <p className="error-message-login">{message}</p>}
       </div>
     </div>
   );
 }
 
-export default Signup;
+export default Login;
