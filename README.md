@@ -78,3 +78,7 @@ For inquiries or support regarding ForgeSavant, please feel free to reach out vi
 - LinkedIn: [LinkedIn Profile](https://www.linkedin.com/in/monesh-b-053439289/)
 
 We look forward to hearing
+
+## Deployed links
+
+- [Front-end](https://mellow-choux-415522.netlify.app/)
