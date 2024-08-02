@@ -52,10 +52,6 @@ const ProcessorSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  image_url: {
-    type: String,
-    required: true,
-  },
 });
 
 // Create a model based on the schema

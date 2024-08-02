@@ -24,6 +24,8 @@ function Login() {
 
       if (response.status === 200) {
         console.log("Login successful:", response.data);
+        localStorage.setItem("user", response.data)
+        localStorage.setItem('email', email)
         navigate('/build'); // Navigate to /dashboard page after successful login
       } else {
         console.log("Error data: ", response.data); // Debugging log
@@ -58,6 +60,8 @@ function Login() {
 
         if (loginResponse.status === 200) {
           console.log("Login successful:", loginResponse.data);
+          localStorage.setItem("user", JSON.stringify(loginResponse.data));
+          localStorage.setItem('email', decoded.email);
           navigate('/build'); // Navigate to /build page after successful login
         }
       } else {
@@ -69,6 +73,8 @@ function Login() {
 
         if (signupResponse.status === 201) {
           console.log("Sign-up successful:", signupResponse.data);
+          localStorage.setItem("user", JSON.stringify(decoded.name));
+          localStorage.setItem('email', decoded.email);
           navigate('/build'); // Navigate to /build page after successful sign-up
         }
       }

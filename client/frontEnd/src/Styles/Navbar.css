@@ -98,6 +98,22 @@
 
 .Build:hover{
   transform: scale(1.05);
+  background-color: #f7d435; 
+}
+
+.logout{
+  padding: 10px 20px;
+  font-family: 'Russo One';
+  background-color: #F9D949;
+  color: #000000;
+  width: 150px; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.logout:hover{
+  transform: scale(1.05);
   background-color: #f7d435;
-  
 }
