@@ -61,10 +61,6 @@ const MotherboardSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  image_url: {
-    type: String,
-    required: true,
-  },
 });
 
 // Create the Motherboard model from the schema
