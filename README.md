@@ -7,17 +7,14 @@ ForgeSavant is a web application aimed at providing users with a seamless experi
 - **Virtual PC Builder**: Effortlessly create and customize your dream PC configurations using an intuitive interface.
 - **Compatibility Checker**: Ensure that selected components are compatible with each other to avoid potential hardware conflicts.
 - **Performance Assessment**: Evaluate the performance capabilities of your PC builds through benchmark scores and comparisons.
-- **Real-time Price Tracking**: Access up-to-date pricing information for individual components from various online retailers.
 - **User Profiles**: Save and manage multiple PC configurations under personalized user profiles for convenient access and reference.
 
 ## Technologies Used
 
 - **Frontend**: HTML5, CSS3, JavaScript (React.js v16.8.0)
 - **Backend**: Node.js, Express.js
-- **Genetic Algorithm**: A genetic algorithm is used to optimize component selection for performance.
 - **Database**: MongoDB
-- **External APIs**: [Still in progress...]
-- **Deployment**: [Still in progress...]
+- **External APIs**: Google OAuth, Google AI studio
 
 ## Getting Started
 
@@ -81,5 +78,5 @@ We look forward to hearing
 
 ## Deployed links
 
-- [Front-end](https://mellow-choux-415522.netlify.app/)
-- [Back-end](https://s51-monesh-capstone-forgesavant.onrender.com/)
+- [Front-end](https://66ae12ce42913a7ac2a1da44--extraordinary-kashata-7fa827.netlify.app/)
+- [Back-end](https://s51-monesh-capstone-forgesavant.onrender.com)
