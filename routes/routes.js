@@ -1,6 +1,8 @@
 const express = require("express");
+const ObjectId = require("mongodb");
 const router = express.Router();
 const User = require('../models/user.model');
+const { saves, saves2 } = require('../models/saves.model');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
@@ -48,7 +50,7 @@ router.post('/googleLogin', async (req, res) => {
       { expiresIn: '1h' },
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        res.send(fullname);
       }
     );
   } catch (err) {
@@ -68,7 +70,7 @@ router.post('/login', [
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { email, password, googleLogin } = req.body;
+  const { email, password } = req.body;
 
   try {
     // Check if user exists
@@ -77,48 +79,29 @@ router.post('/login', [
       return res.status(400).json({ error: 'Invalid Credentials' });
     }
 
-    if (googleLogin) {
-      // If Google login, bypass password check
-      const payload = {
-        user: {
-          id: user.id
-        }
-      };
-
-      jwt.sign(
-        payload,
-        process.env.JWT_SECRET,
-        { expiresIn: '1h' },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
-    } else {
-      // Check if password matches
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) {
-        return res.status(400).json({ error: 'Invalid Credentials' });
-      }
-
-      // Create JWT payload
-      const payload = {
-        user: {
-          id: user.id
-        }
-      };
-
-      // Sign the JWT token
-      jwt.sign(
-        payload,
-        process.env.JWT_SECRET,
-        { expiresIn: '1h' },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
+    // Check if password matches
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: 'Invalid Credentials' });
     }
+
+    // Create JWT payload
+    const payload = {
+      user: {
+        id: user.id
+      }
+    };
+
+    // Sign the JWT token
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' },
+      (err, token) => {
+        if (err) throw err;
+        res.send(user.fullname);
+      }
+    );
   } catch (err) {
     console.error('Error during login:', err);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -196,38 +179,59 @@ router.post('/googleSignup', async (req, res) => {
   }
 });
 
-
-// Endpoint to check compatibility
-router.post("/checkCompatibility", async (req, res) => {
+//saves
+router.post("/saves", async (req, res) => {
+  const { cpu, motherboard, gpu, primaryStorage, secondaryStorage, ram, powerSupply, cabinet, email, cinebench, cyberpunk, image } = req.body;
+  
   try {
-    const { processor, motherboard, graphicsCard, ram, storage, smps, cabinet } = req.body.selectedComponents;
-
-    const compatibilityResult = {
-      compatible: [],
-      incompatible: []
-    };
-
-    if (processor && motherboard && graphicsCard && ram && storage && smps && cabinet) {
-      const processorSocket = await Processor.findById(processor);
-      const motherboardSocket = await Motherboard.findById(motherboard);
-
-      if (processorSocket.specifications.socket === motherboardSocket.specifications.socketType) {
-        compatibilityResult.compatible.push("Processor and Motherboard are compatible");
-      } else {
-        compatibilityResult.incompatible.push("Processor and Motherboard are not compatible");
-      }
-
-      res.json(compatibilityResult);
-    } else {
-      res.status(400).json({ error: "Please select all components" });
-    }
+    const newSaves = new saves({ cpu, motherboard, gpu, primaryStorage, secondaryStorage, ram, powerSupply, cabinet, email, cinebench, cyberpunk, image });
+    await newSaves.save();
+    return res.status(201).json({ message: 'Save successful' });
   } catch (err) {
-    console.error("Error checking compatibility:", err);
+    console.error('Error during saving details', err);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+//saves2
+router.get("/saves2", async (req, res) => {
+  try{
+    const saves = await saves2.find();
+    res.json(saves)
+  }catch (err){
+    console.error('Error during getting saves', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+//saves2 Delete
+router.delete("/delsaves/:id", async (req, res) => {
+  try{
+    const { id } = req.params
+    const profile = await saves2.findOneAndDelete({ _id: id });
+
+    if (!profile){
+      return res.status(404).json({ error: 'No profile found' });
+    }
+
+    res.status(200).json({ message: "Deleted" })
+  }catch (err) {
+    console.error('Error during deleting profile', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+})
+
+// GPU
+router.get("/GPU", async (req, res) => {
+  try {
+    const graphicCard = await GraphicsCard.find();
+    res.json(graphicCard);
+  } catch (err) {
+    console.error("Error occurred while fetching GPU data:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-// GPU
 router.get("/GPU/:id", async (req, res) => {
   try {
     const gpuId = req.params.id;
@@ -244,15 +248,6 @@ router.get("/GPU/:id", async (req, res) => {
   }
 });
 
-router.get("/GPU", async (req, res) => {
-  try {
-    const graphicCard = await GraphicsCard.find();
-    res.json(graphicCard);
-  } catch (err) {
-    console.error("Error occurred while fetching GPU data:", err);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
 
 // CPU
 router.get("/CPU/:id", async (req, res) => {

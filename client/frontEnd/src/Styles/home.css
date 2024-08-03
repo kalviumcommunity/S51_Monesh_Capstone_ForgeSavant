@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Kaushan+Script&display=swap');
 
-.Display{
+.Display {
   display: flex;
   overflow: hidden;
   height: 100vh;
@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.MainBody{
+.MainBody {
   display: flex;
   flex-direction: column;
   background-color: black;
@@ -22,12 +22,12 @@
   margin-top: 40px;
 }
 
-.MainBody h1{
+.MainBody h1 {
   font-size: 80px;
   font-family: "Kaushan Script", cursive;
 }
 
-.marquee{
+.marquee {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -36,29 +36,27 @@
   font-size: 20px;
 }
 
-.marquee span{
+.marquee span {
   text-decoration: none;
   border-top: 2px solid #F9D949;
   border-bottom: 2px solid #F9D949;
 }
 
-.marquee1 span{
+.marquee1 span {
   will-change: transform;
   transform: translateX(0);
   white-space: nowrap;
   animation: marquee 6s linear infinite;
-  /* font-family: "Jersey 10", sans-serif; */
   font-family: "Jersey 15", sans-serif;
   font-weight: 900;
   color: #F9D949;
 }
 
-.marquee2 span{
+.marquee2 span {
   will-change: transform;
   transform: translateX(100%);
   white-space: nowrap;
   animation: marquee2 6s linear infinite;
-  /* font-family: "Jersey 10", sans-serif; */
   font-family: "Jersey 15", sans-serif;
   font-weight: 900;
   color: #F9D949;
@@ -82,29 +80,104 @@
   }
 }
 
-.secondPage{
+.secondPage {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 100vh;
   background-color: black;
   justify-content: center;
   align-items: center;
 }
 
-.secondBody h1{
-  font-size: 80px;
-  font-family: "Kaushan Script", cursive;
+.section {
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+  align-items: center;
+  margin: 100px 0;
+  color: white;
 }
 
-.secondBody{
+.section div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: #f9d949e0 5px 5px, #f9d949c2 10px 10px, #f9d949aa 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+  background-color: #F9D949;
+}
+
+.section p {
+  text-align: left;
+  font-family: 'Russo one';
+  font-size: 23px;
+  width: 30vw;
+  margin-left: 100px;
+}
+
+.FirstSection img {
+  margin-left: 100px;
+  height: 500px;
+  margin: auto;
+}
+
+.secondSection {
+  gap: 100px;
+}
+
+.secondSection img {
+  height: 500px;
+  padding: 100px;
+}
+
+.thirdSection img {
+  padding: 100px;
+}
+
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.footer{
   display: flex;
   flex-direction: column;
-  background-color: black;
-  color: #F9D949;
-  height: 250px;
+  background-color: rgb(3, 2, 2);
+  color: white;
+  font-family: 'Russo one';
+  width: 100vw;
+}
+
+.footer-top{
+  display: flex;
+  margin-left: 40px;
+  margin-top: 20px;
+  width: 95vw;
+  border-bottom: #F9D949 1px solid;
+}
+
+.footer-top-second{
+  margin-left: 20px;
+  margin-bottom: 40px;
+}
+
+.footer-top p{
+  margin-top: 10px;
+}
+
+.footer-bottom {
+  display: flex;
   justify-content: space-between;
+  margin: 30px;
+}
+
+.footer-bottom div{
+  display: flex;
   align-items: center;
-  rotate: -6deg;
-  margin-top: 40px;
+}
+
+.footer-bottom img{
+  height: 30px;
+  margin-left: 20px;
 }

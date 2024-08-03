@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar";
 import Build from "./Components/Build";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
+import Profile from "./Components/Profile";
 import './App.css'
 
 const App = () => {
@@ -26,6 +27,10 @@ const App = () => {
           <Signup/>
         </>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/profile" element={<>
+          <Navbar/>
+          <Profile/>
+        </>}/>
       </Routes>
     </Router>
   );

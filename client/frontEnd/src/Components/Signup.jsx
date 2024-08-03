@@ -53,6 +53,8 @@ function Signup() {
 
       if (response.status === 201) {
         console.log("Sign-up successful:", response.data);
+        localStorage.setItem("user", JSON.stringify(fullname));
+        localStorage.setItem('email', email);
         navigate('/build'); // Navigate to /build page after successful sign-up
       } else {
         console.log("Error data: ", response.data); // Debugging log
@@ -87,6 +89,8 @@ function Signup() {
 
         if (loginResponse.status === 200) {
           console.log("Login successful:", loginResponse.data);
+          localStorage.setItem("user", JSON.stringify(loginResponse.data));
+          localStorage.setItem('email', decoded.email);
           navigate('/build'); // Navigate to /build page after successful login
         }
       } else {
@@ -98,6 +102,8 @@ function Signup() {
 
         if (signupResponse.status === 201) {
           console.log("Sign-up successful:", signupResponse.data);
+          localStorage.setItem("user", JSON.stringify(decoded.name)); 
+          localStorage.setItem('email', decoded.email);
           navigate('/build'); // Navigate to /build page after successful sign-up
         }
       }
