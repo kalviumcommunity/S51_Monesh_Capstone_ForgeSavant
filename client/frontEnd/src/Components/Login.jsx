@@ -17,7 +17,7 @@ function Login() {
     setMessage(""); // Clear any existing messages
     console.log(email, password);
     try {
-      const response = await axios.post("http://localhost:5000/login", {
+      const response = await axios.post("https://s51-monesh-capstone-forgesavant.onrender.com/login", {
         email,
         password
       });
@@ -47,13 +47,13 @@ function Login() {
       console.log(decoded);
 
       // Check if the user already exists
-      const existingUserResponse = await axios.post("http://localhost:5000/checkGoogleUser", {
+      const existingUserResponse = await axios.post("https://s51-monesh-capstone-forgesavant.onrender.com/checkGoogleUser", {
         email: decoded.email,
       });
 
       if (existingUserResponse.data.exists) {
         // User exists, log them in
-        const loginResponse = await axios.post("http://localhost:5000/googleLogin", {
+        const loginResponse = await axios.post("https://s51-monesh-capstone-forgesavant.onrender.com/googleLogin", {
           email: decoded.email,
           fullname: decoded.name
         });
@@ -66,7 +66,7 @@ function Login() {
         }
       } else {
         // User does not exist, create a new account and log in
-        const signupResponse = await axios.post("http://localhost:5000/googleSignup", {
+        const signupResponse = await axios.post("https://s51-monesh-capstone-forgesavant.onrender.com/googleSignup", {
           fullname: decoded.name,
           email: decoded.email,
         });

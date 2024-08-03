@@ -142,8 +142,8 @@ const Home = () => {
             </p>
             <div>
               <p>Follow Us</p>
-              <img src={insta} alt="" style={{ backgroundColor: "black" }} />
-              <img src={linkedin} alt="" />
+              <a href="https://www.instagram.com/itz_monesh/" target="_blank"><img src={insta} alt="" style={{ backgroundColor: "black" }} /></a>
+              <a href="https://www.linkedin.com/in/monesh-b-053439289/" target="_blank"><img src={linkedin} alt="" /></a>
             </div>
           </div>
         </div>
