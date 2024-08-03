@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";  // Corrected import
-import logo from "../assets/ForgeSavant1.png";
+import logo from "../assets/ForgeSavant2.png";
 import "../Styles/signup.css";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
@@ -172,8 +172,9 @@ function Signup() {
                 backgroundColor: "transparent",
                 color: "white",
               }}
+              id="login"
             >
-              Already have an account? Login here.
+              <p>Already have an account? Login here.</p>
             </button>
           </Link>
         </form>
