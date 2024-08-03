@@ -44,10 +44,6 @@ const RamSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  image_url: {
-    type: String,
-    required: true,
-  },
 });
 
 
