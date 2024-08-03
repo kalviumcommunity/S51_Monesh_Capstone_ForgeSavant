@@ -9,7 +9,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/saves2'); 
+        const response = await axios.get('https://s51-monesh-capstone-forgesavant.onrender.com/saves2'); 
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -23,7 +23,7 @@ const Profile = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/delsaves/${id}`);
+      await axios.delete(`https://s51-monesh-capstone-forgesavant.onrender.com/delsaves/${id}`);
       setData(data.filter((item) => item._id !== id));
     } catch (err) {
       console.error(err);

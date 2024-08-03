@@ -83,13 +83,13 @@ const Build = () => {
           motherboardResponse,
           ramResponse,
         ] = await Promise.all([
-          axios.get("http://localhost:5000/GPU"),
-          axios.get("http://localhost:5000/CPU"),
-          axios.get("http://localhost:5000/cabinet"),
-          axios.get("http://localhost:5000/storage"),
-          axios.get("http://localhost:5000/smps"),
-          axios.get("http://localhost:5000/motherboard"),
-          axios.get("http://localhost:5000/ram"),
+          axios.get("https://s51-monesh-capstone-forgesavant.onrender.com/GPU"),
+          axios.get("https://s51-monesh-capstone-forgesavant.onrender.com/CPU"),
+          axios.get("https://s51-monesh-capstone-forgesavant.onrender.com/cabinet"),
+          axios.get("https://s51-monesh-capstone-forgesavant.onrender.com/storage"),
+          axios.get("https://s51-monesh-capstone-forgesavant.onrender.com/smps"),
+          axios.get("https://s51-monesh-capstone-forgesavant.onrender.com/motherboard"),
+          axios.get("https://s51-monesh-capstone-forgesavant.onrender.com/ram"),
         ]);
 
         setGpuData(gpuResponse.data);
@@ -244,7 +244,7 @@ const Build = () => {
       console.log(message);
     } else {
       try {
-        const response = await axios.post("http://localhost:5000/saves", {
+        const response = await axios.post("https://s51-monesh-capstone-forgesavant.onrender.com/saves", {
           cpu: selectedProcessor.name,
           motherboard: selectedMotherboard.name,
           gpu: selectedGPU.name,

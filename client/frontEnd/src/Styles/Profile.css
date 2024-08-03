@@ -10,6 +10,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(600px, 1.2em));
+  justify-content: space-around;
   gap: 30px;
   background-color: gold;
   border-radius: 10px;
