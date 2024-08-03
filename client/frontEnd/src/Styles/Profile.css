@@ -1,0 +1,129 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: black;
+  padding: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1.2em));
+  justify-content: space-around;
+  gap: 30px;
+  background-color: gold;
+  border-radius: 10px;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  width: 83vw;
+  padding: 20px;
+}
+
+.grid-item {
+  display: flex;
+  width: 600px;
+  align-items: center;
+  background-color: black;
+  color: white;
+  /* border: 1px solid #ddd; */
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item h2 {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+.grid-item p {
+  margin: 8px 0 0;
+}
+
+.empty{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: gold;
+  border-radius: 10px;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  height: auto;
+  width: 90vw;
+}
+
+.no-data{
+  height: 60vh;
+  font-size: 25px;
+  font-family: 'Russo one';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.item-list {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  width: 100vw;
+  margin-left: 1.5rem;
+}
+
+.item-list div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.item-list p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  margin: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-list div:first-child p {
+  font-weight: bold;
+  margin-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-list div:first-child p, .item-list div:last-child p {
+  align-self: flex-start;
+}
+
+.item-image {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.item-image img {
+  /* max-width: 100%; */
+  padding: 10px;
+  background-color: rgb(255, 228, 73);
+  height: 200px;
+  border-radius: 8px;
+}
+
+.crud button {
+  background-color: #646257; /* Gold color */
+  color: rgb(255, 251, 251); /* Text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.crud button:hover {
+  background-color: #46433a; /* Slightly darker gold for hover */
+}

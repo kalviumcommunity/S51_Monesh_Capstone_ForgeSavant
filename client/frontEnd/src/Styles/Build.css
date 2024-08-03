@@ -1,7 +1,8 @@
-/* Build Page */
 .Build_Page {
   height: 100vh;
-  background-image: url("../assets/BuildBackground.png");
+
+  background-color: #000000;
+  /* background-image: url('../assets/BuildBackground.png'); */
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -18,65 +19,149 @@
 
 /* Build Title */
 .Build-Title {
-  font-family: "Russo one";
+  display: flex;
+  flex-direction: column;
+  float: inline-start;
+  font-family: "Russo One", sans-serif;
   color: white;
-  align-self: flex-start;
-  margin-left: 15%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Build Content */
+.Build-Content {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 /* Build Area */
 .Build-Area {
   height: 60vh;
-  margin-top: 20px;
-  width: 70vw;
+  width: 32%;
   background: rgb(0,0,0);
-  background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(89,89,89,1) 79%);
+  border-radius: 10px;
+  /* background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(89,89,89,1) 79%); */
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-right: 2%;
 }
 
-/* Selection paragraph */
+/* Selection */
 .selection {
   background-color: #f9d949;
+  /* border: 1px solid red; */
+  border-radius: 10px;
   font-size: 20px;
   height: 60vh;
-  width: 48%;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Russo one";
+  font-family: "Russo One", sans-serif;
 }
 
 /* Selection paragraph text */
 .selection div p {
   cursor: pointer;
-  padding: 20px 30px;
+  background-color: #000000;
+  color: white;
+  margin: 10px;
+  padding: 10px;
   border-radius: 5px;
-  height: 20px;
   transition: background-color 0.3s ease;
 }
 
-.selection div{
+.next{
+  /* border: 1px solid red; */
   display: flex;
+  position: absolute;
+  width: 15%;
+  margin-top: 150px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.done{
+  display: flex;
+  position: absolute;
+  width: 15%;
+  margin-top: 150px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.selection div {
+  display: flex;
+}
+
+.selection-container{
+  display: flex;
+  flex-direction: column;
 }
 
 /* PC Image */
 .pc-img {
+  background-color: #333333;
+  display: flex;
+  flex-direction: column;
+  /* background-image: url('../assets/BuildBackground.png'); */
+  /* background-size: cover; */
+  /* background-position: center; */
   height: 60vh;
-  width: 52%;
+  width: 28%;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.list{
+  display: flex;
+  color: #fff;
+}
+
+.list div{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: flex-start; */
+}
+
+.list div:first-child p{
+  font-weight: bold;
+  margin-top: 5px;
+  margin-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list p{
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  margin: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .pc-img img {
-  /* height: 90%; */
-  width: 70%;
+  /* border: 1px #9E9E9E  solid; */
+  /* background-color: #9E9E9E; */
+  border-radius: 10px;
+  max-height: 70%;
+  max-width: 70%;
 }
 
 /* Modal */
-.modal {
+/* .modal {
   position: absolute;
   top: 54%;
   left: 32%;
@@ -86,12 +171,12 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* Modal Content */
-.modal-content {
+/* .modal-content {
   width: 300px;
-}
+} */
 
 /* Modal Title */
 .modal-content h2 {
@@ -103,14 +188,14 @@
 /* Modal Select container */
 .select-container {
   position: relative;
-}
+} 
 
 /* Modal Select dropdown */
 .modal-content select {
-  width: 100%;
-  padding: 12px;
+  width: 90%;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #fff;
   font-size: 16px;
   color: #333;
@@ -141,7 +226,6 @@
   border-color: #555;
   outline: none;
 }
-
 
 /* Specs Page */
 .specs-page{

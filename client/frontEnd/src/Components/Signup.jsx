@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";  // Corrected import
-import logo from "../assets/ForgeSavant1.png";
+import logo from "../assets/ForgeSavant2.png";
 import "../Styles/signup.css";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
@@ -45,7 +45,7 @@ function Signup() {
     }
     console.log(fullname, email, password);
     try {
-      const response = await axios.post("http://localhost:5000/signup", {
+      const response = await axios.post("https://s51-monesh-capstone-forgesavant.onrender.com/signup", {
         fullname,
         email,
         password
@@ -53,6 +53,8 @@ function Signup() {
 
       if (response.status === 201) {
         console.log("Sign-up successful:", response.data);
+        localStorage.setItem("user", JSON.stringify(fullname));
+        localStorage.setItem('email', email);
         navigate('/build'); // Navigate to /build page after successful sign-up
       } else {
         console.log("Error data: ", response.data); // Debugging log
@@ -74,30 +76,34 @@ function Signup() {
       console.log(decoded);
 
       // Check if the user already exists
-      const existingUserResponse = await axios.post("http://localhost:5000/checkGoogleUser", {
+      const existingUserResponse = await axios.post("https://s51-monesh-capstone-forgesavant.onrender.com/checkGoogleUser", {
         email: decoded.email,
       });
 
       if (existingUserResponse.data.exists) {
         // User exists, log them in
-        const loginResponse = await axios.post("http://localhost:5000/googleLogin", {
+        const loginResponse = await axios.post("https://s51-monesh-capstone-forgesavant.onrender.com/googleLogin", {
           email: decoded.email,
           googleLogin: true,
         });
 
         if (loginResponse.status === 200) {
           console.log("Login successful:", loginResponse.data);
+          localStorage.setItem("user", JSON.stringify(loginResponse.data));
+          localStorage.setItem('email', decoded.email);
           navigate('/build'); // Navigate to /build page after successful login
         }
       } else {
         // User does not exist, create a new account
-        const signupResponse = await axios.post("http://localhost:5000/googleSignup", {
+        const signupResponse = await axios.post("https://s51-monesh-capstone-forgesavant.onrender.com/googleSignup", {
           fullname: decoded.name,
           email: decoded.email,
         });
 
         if (signupResponse.status === 201) {
           console.log("Sign-up successful:", signupResponse.data);
+          localStorage.setItem("user", JSON.stringify(decoded.name)); 
+          localStorage.setItem('email', decoded.email);
           navigate('/build'); // Navigate to /build page after successful sign-up
         }
       }
@@ -166,8 +172,9 @@ function Signup() {
                 backgroundColor: "transparent",
                 color: "white",
               }}
+              id="login"
             >
-              Already have an account? Login here.
+              <p>Already have an account? Login here.</p>
             </button>
           </Link>
         </form>

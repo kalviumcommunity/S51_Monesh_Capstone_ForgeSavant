@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useSpring, animated } from "@react-spring/web";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
 import "../Styles/home.css";
+import firstImage from "../assets/build_from_scratch.png";
+import secondImage from "../assets/Custom_PC.png";
+import thirdImage from "../assets/CyberPunk.png";
+import insta from "../assets/instagram.png";
+import linkedin from "../assets/LinkedIn.png";
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0);
+  const aboutRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,45 +18,135 @@ const Home = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const slideIn = useSpring({
-    from: { transform: "translateX(-10%)", opacity: 0 },
-    to: { transform: "translateX(0)", opacity: 1 },
-    config: { duration: 1000 },
-  });
+  useEffect(() => {
+    const handleScrollToAbout = () => {
+      const url = new URL(window.location);
+      if (url.hash === '#about') {
+        aboutRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
 
-  const appearIn = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    config: { duration: 1000 },
-  });
+    window.addEventListener('hashchange', handleScrollToAbout);
+    return () => window.removeEventListener('hashchange', handleScrollToAbout);
+  }, []);
+
+  const handleAboutClick = () => {
+    if (location.pathname === '/') {
+      window.location.hash = 'about';
+    } else {
+      navigate('/#about');
+    }
+  };
 
   return (
     <>
       <div className="Display">
-        <div className="MainBody" style={{ transform: `translateY(-${scrollY * 0.1}px)` }}>
-          <animated.div style={appearIn} className="marquee marquee1">
-            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
-            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
-          </animated.div>
-          <animated.div style={slideIn} className="BrandName"><h1>Forge Savant</h1></animated.div>
-          <animated.div style={appearIn} className="marquee marquee2">
-            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
-            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
-          </animated.div>
+        <div
+          className="MainBody"
+          style={{ transform: `translateY(-${scrollY * 0.1}px)` }}
+        >
+          <div className="marquee marquee1">
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+          </div>
+          <div className="BrandName">
+            <h1>Forge Savant</h1>
+          </div>
+          <div className="marquee marquee2">
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+            <span>| Electrical Hazard&nbsp;</span>
+          </div>
         </div>
       </div>
-      <div className="secondPage">
-        <div className="secondBody">
-      <animated.div style={appearIn} className="marquee marquee1">
-            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
-            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
-          </animated.div>
-          <animated.div style={slideIn}><h1>On Progress</h1></animated.div>
-          <animated.div style={appearIn} className="marquee marquee2">
-            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
-            <span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span><span>| Electrical Hazard&nbsp;</span>
-          </animated.div>
+      <div ref={aboutRef} className="secondPage">
+        <div className="FirstSection section parallax">
+          <p style={{ transform: `translateY(-${scrollY * 0.1}px)` }}>
+            Building a custom PC can be a daunting task, especially without
+            detailed knowledge of hardware components and compatibility issues.
+            The process often involves extensive research, comparing
+            specifications, and understanding the intricate details of each
+            part.
+          </p>
+          <div style={{ transform: `translateY(-${scrollY * 0.03}px)` }}>
+            <img
+              src={firstImage}
+              alt="Build from scratch"
+              style={{ transform: `translateY(-${scrollY * 0.02}px)` }}
+            />
           </div>
+        </div>
+        <div className="secondSection section parallax">
+          <div style={{ transform: `translateY(-${scrollY * 0.06}px)` }}>
+            <img
+              src={secondImage}
+              alt="Custom PC"
+              style={{ transform: `translateY(-${scrollY * 0.02}px)` }}
+            />
+          </div>
+          <p style={{ transform: `translateY(-${scrollY * 0.09}px)` }}>
+            That's where ForgeSavant comes in. Our platform is designed to
+            simplify the custom PC building experience, making it accessible to
+            everyone, regardless of their technical expertise.
+          </p>
+        </div>
+        <div className="thirdSection section parallax">
+          <p style={{ transform: `translateY(-${scrollY * 0.1}px)` }}>
+            With ForgeSavant, you can build your custom PC easily and
+            confidently. Our platform not only helps you select the best
+            components but also provides real-time insights into the performance
+            and price of your build.
+          </p>
+          <div style={{ transform: `translateY(-${scrollY * 0.06}px)` }}>
+            <img
+              src={thirdImage}
+              alt="CyberPunk"
+              style={{ transform: `translateY(-${scrollY * 0.02}px)` }}
+            />
+          </div>
+        </div>
+        <div className="footer">
+          <div className="footer-top">
+            <div className="footer-top-second">
+              <h1>For Contact</h1>
+              <p>✉️ 2005.monesh@gmail.com</p>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>
+              &copy; {new Date().getFullYear()} ForgeSavant. All rights
+              reserved.
+            </p>
+            <div>
+              <p>Follow Us</p>
+              <a href="https://www.instagram.com/itz_monesh/" target="_blank"><img src={insta} alt="" style={{ backgroundColor: "black" }} /></a>
+              <a href="https://www.linkedin.com/in/monesh-b-053439289/" target="_blank"><img src={linkedin} alt="" /></a>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
