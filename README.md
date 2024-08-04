@@ -78,5 +78,5 @@ We look forward to hearing
 
 ## Deployed links
 
-- [Front-end](https://66ae12ce42913a7ac2a1da44--extraordinary-kashata-7fa827.netlify.app/)
+- [Front-end](https://66afbd0b1a567edb42e38508--stellular-pony-37d1ec.netlify.app/)
 - [Back-end](https://s51-monesh-capstone-forgesavant.onrender.com)

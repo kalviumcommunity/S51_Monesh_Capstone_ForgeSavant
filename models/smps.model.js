@@ -48,10 +48,6 @@ const PowerSupplySchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  image_url: {
-    type: String,
-    required: true,
-  },
 });
 
 // Create the PowerSupply model from the schema
