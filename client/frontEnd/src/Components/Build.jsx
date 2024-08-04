@@ -115,7 +115,6 @@ const Build = () => {
 
   const handleComponentSelect = (data, setSelected) => async (event) => {
     const selected = data.find((obj) => obj._id === event.target.value);
-    console.log(selected)
     setSelected(selected);
 
     if (setSelected === setSelectedCabinet){
@@ -227,7 +226,6 @@ const Build = () => {
 
     try {
       const responseObject = JSON.parse(responseText);
-      console.log(responseObject);
       return responseObject;
     } catch (error) {
       console.error("Failed to parse response as JSON:", error);
@@ -260,7 +258,6 @@ const Build = () => {
         });
 
         console.log("Response Status:", response.status);
-        console.log("Response Data:", response.data);
 
         if (response.status === 201) {
           console.log("Saved successfully");
@@ -588,7 +585,7 @@ const Build = () => {
                     >
                       <option label="Available SMPS" />
                       {filterData(smpsData, (smps) => {
-                        const smpsPSU = parseInt(smps.specifications.wattage);
+                        const smpsPSU = parseInt(smps.specification.wattage);
                         const comparePSU = parseInt(PSUSuggest);
                         console.log(PSUSuggest);
                         return (
@@ -768,14 +765,14 @@ const Build = () => {
                 <div>
                   <p>Name:</p>
                   <p>Wattage:</p>
-                  <p>Certification:</p>
+                  <p>Efficiency:</p>
                   <p>Fan Size:</p>
                 </div>
                 <div>
                   <p>{selectedSMPS.name}</p>
-                  <p>{selectedSMPS.specifications.wattage}</p>
-                  <p>{selectedSMPS.specifications.certification}</p>
-                  <p>{selectedSMPS.specifications.fan_size}</p>
+                  <p>{selectedSMPS.specification.wattage}</p>
+                  <p>{selectedSMPS.specification.efficiency}</p>
+                  <p>{selectedSMPS.specification.fan_size}</p>
                 </div>
               </div>
             )}
@@ -791,51 +788,6 @@ const Build = () => {
                 <p>{selectedCabinet.specifications.form_factor}</p>
               </div>
             </div> )}
-          </div>
-        </div>
-      </div>
-
-      <div className="specs-page">
-        <div className="specs">
-          <div id="cpu">
-            CPU:
-            <br />
-            <br /> {selectedProcessor.name}
-          </div>
-          <div id="motherboard">
-            Motherboard:
-            <br />
-            <br /> {selectedMotherboard.name}
-          </div>
-          <div id="gpu">
-            GPU:
-            <br />
-            <br /> {selectedGPU.name}
-          </div>
-          <div id="storage">
-            Storage:
-            <br />
-            <br /> {selectedStorage.name}
-          </div>
-          <div id="storage">
-            Secondary Storage:
-            <br />
-            <br /> {selectedSecondStorage.name}
-          </div>
-          <div id="ram">
-            RAM:
-            <br />
-            <br /> {selectedRAM.name}
-          </div>
-          <div id="smps">
-            SMPS:
-            <br />
-            <br /> {selectedSMPS.name}
-          </div>
-          <div id="cabinet">
-            Cabinet:
-            <br />
-            <br /> {selectedCabinet.name}
           </div>
         </div>
       </div>

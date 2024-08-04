@@ -15,7 +15,6 @@ function Login() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     setMessage(""); // Clear any existing messages
-    console.log(email, password);
     try {
       const response = await axios.post("https://s51-monesh-capstone-forgesavant.onrender.com/login", {
         email,
@@ -44,7 +43,6 @@ function Login() {
   const handleGoogleLogin = async (credentialResponse) => {
     try {
       const decoded = jwtDecode(credentialResponse.credential);
-      console.log(decoded);
 
       // Check if the user already exists
       const existingUserResponse = await axios.post("https://s51-monesh-capstone-forgesavant.onrender.com/checkGoogleUser", {
@@ -72,7 +70,6 @@ function Login() {
         });
 
         if (signupResponse.status === 201) {
-          console.log("Sign-up successful:", signupResponse.data);
           localStorage.setItem("user", JSON.stringify(decoded.name));
           localStorage.setItem('email', decoded.email);
           navigate('/build'); // Navigate to /build page after successful sign-up

@@ -226,31 +226,3 @@
   border-color: #555;
   outline: none;
 }
-
-/* Specs Page */
-.specs-page{
-  display: flex;
-  height: 60vh;
-  justify-content: center;
-  align-items: center;
-  background-color: #333;
-  color: white;
-  font-family: 'Russo one';
-}
-
-.specs{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* grid-template-rows: repeat(2, auto); */
-  gap: 100px;
-  width: 100%;
-}
-
-.specs div{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 10vh;
-  width: 100%;
-  padding: 20px;
-}

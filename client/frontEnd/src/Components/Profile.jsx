@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import '../Styles/Profile.css'; // Import the CSS file
 
 const Profile = () => {
@@ -9,7 +10,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://s51-monesh-capstone-forgesavant.onrender.com/saves2'); 
+        const response = await axios.get('https://s51-monesh-capstone-forgesavant.onrender.com/saves2');
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -34,13 +35,20 @@ const Profile = () => {
     return data.filter(criteria);
   };
 
+  const email = localStorage.getItem('email');
+  const filteredData = filterData(data, (datas) => datas.email === email);
+
+  console.log('Email:', email); // Debugging log
+  console.log('Data:', data); // Debugging log
+  console.log('Filtered Data:', filteredData); // Debugging log
+
   return (
     <div className='profile-page'>
       {loading ? (
         <div>Loading...</div>
-      ) : data.length > 0 ? (
+      ) : filteredData.length > 0 ? (
         <div className="grid-container">
-          {filterData(data, (datas) => datas.email === localStorage.getItem('email')).map((item, index) => (
+          {filteredData.map((item, index) => (
             <div key={index} className="grid-item">
               <div className='item-image'>
                 <img src={item.image} alt="" />
@@ -68,7 +76,7 @@ const Profile = () => {
           ))}
         </div>
       ) : (
-        <div className='empty'><div className='no-data'>No data available</div></div>
+        <div className='empty'><Link to="/build"><div className='no-data'>Start Forging your PC...</div></Link></div>
       )}
     </div>
   );

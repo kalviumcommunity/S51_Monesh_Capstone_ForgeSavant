@@ -52,7 +52,6 @@ function Signup() {
       });
 
       if (response.status === 201) {
-        console.log("Sign-up successful:", response.data);
         localStorage.setItem("user", JSON.stringify(fullname));
         localStorage.setItem('email', email);
         navigate('/build'); // Navigate to /build page after successful sign-up
